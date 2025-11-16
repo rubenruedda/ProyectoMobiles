@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_inicio">
+
+    <fragment
+        android:id="@+id/nav_inicio"
+        android:name="view.fragment.InicioFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_inicio" />
+    <fragment
+        android:id="@+id/nav_competiciones"
+        android:name="view.fragment.CompeticionesFragment"
+        android:label="Competiciones"
+        tools:layout="@layout/fragment_competiciones" />
+    <fragment
+        android:id="@+id/nav_noticias"
+        android:name="view.fragment.NoticiasFragment"
+        android:label="Noticias"
+        tools:layout="@layout/fragment_noticias" />
+    <fragment
+        android:id="@+id/nav_favoritos"
+        android:name="view.fragment.FavoritosFragment"
+        android:label="Favoritos"
+        tools:layout="@layout/fragment_favoritos" />
+</navigation>

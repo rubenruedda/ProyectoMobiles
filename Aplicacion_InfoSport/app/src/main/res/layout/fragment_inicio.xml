@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    tools:context="view.fragment.InicioFragment">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view_inicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        style="@style/AppSearchViewStyle"
+        app:queryHint="Buscar..." />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ligas_principales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_liga" />
+
+    <TextView
+        android:id="@+id/tv_titulo_partidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Partidos de Hoy"
+        android:padding="16dp"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_partidos_hoy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_partido" />
+
+</LinearLayout>

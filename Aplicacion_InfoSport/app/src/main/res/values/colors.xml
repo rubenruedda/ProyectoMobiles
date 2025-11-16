@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_background">#FFFFFFFF</color>
+    <color name="card_background">#FF1C1C1E</color>
+    <color name="primary_green">#FF00C853</color>
+    <color name="text_primary">#FF000000</color>
+    <color name="text_secondary">#282727</color>
+    <color name="bottom_nav_background">#FF1C1C1E</color>
+    <color name="bottom_nav_icon_inactive">#FF888888</color>
+    <color name="bottom_nav_icon_active">@color/primary_green</color>
+    <color name="partido_card_background">#FF0A3E24</color>
+    <color name="partido_card_divider">#FF00C853</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

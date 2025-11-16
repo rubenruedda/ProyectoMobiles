@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="10dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tv_posicion"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:gravity="center"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/iv_escudo_equipo"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/escudo_generico" />
+
+    <TextView
+        android:id="@+id/tv_nombre_equipo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:text="Nombre Equipo" />
+
+    <TextView
+        android:id="@+id/tv_puntos"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="90"
+        android:gravity="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_partidos_jugados"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="38"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_ganados"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="30"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_empatados"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_perdidos"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="8"
+        android:gravity="center" />
+</LinearLayout>

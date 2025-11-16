@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.AplicacionInfoSport" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+
+        <item name="android:windowBackground">@color/app_background</item>
+        <item name="colorSurface">@color/card_background</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+
+        <item name="bottomNavigationStyle">@style/AppBottomNavigationView</item>
+
+        <item name="searchViewStyle">@style/AppSearchViewStyle</item>
+    </style>
+
+    <style name="Theme.AplicacionInfoSport" parent="Base.Theme.AplicacionInfoSport" />
+
+    <style name="AppBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/bottom_nav_background</item>
+        <item name="itemIconTint">@color/bottom_nav_color_selector</item>
+        <item name="itemTextColor">@color/bottom_nav_color_selector</item>
+        <item name="itemActiveIndicatorStyle">@style/AppBottomNavIndicator</item>
+    </style>
+
+    <style name="AppBottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/primary_green</item>
+    </style>
+
+    <style name="AppSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="android:background">@color/card_background</item>
+    </style>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="view.fragment.ClasificacionFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:gravity="center_vertical">
+
+        <TextView android:layout_width="30dp" android:layout_height="wrap_content" />
+        <View android:layout_width="30dp" android:layout_height="30dp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp" />
+        <TextView android:layout_width="30dp" android:layout_height="wrap_content"
+            android:text="Pts" android:gravity="center" android:textStyle="bold" />
+        <TextView android:layout_width="30dp" android:layout_height="wrap_content"
+            android:text="PJ" android:gravity="center" android:textStyle="bold" />
+        <TextView android:layout_width="30dp" android:layout_height="wrap_content"
+            android:text="G" android:gravity="center" android:textStyle="bold" />
+        <TextView android:layout_width="30dp" android:layout_height="wrap_content"
+            android:text="E" android:gravity="center" android:textStyle="bold" />
+        <TextView android:layout_width="30dp" android:layout_height="wrap_content"
+            android:text="P" android:gravity="center" android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_clasificacion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_clasificacion" />
+
+</LinearLayout>
