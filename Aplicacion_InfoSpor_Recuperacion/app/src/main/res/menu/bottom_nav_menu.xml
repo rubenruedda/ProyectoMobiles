@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_inicio"
+        android:icon="@drawable/inicio"
+        android:title="@string/menu_inicio" />
+    <item
+        android:id="@+id/nav_competiciones"
+        android:icon="@drawable/competiciones"
+        android:title="@string/menu_competiciones" />
+    <item
+        android:id="@+id/nav_noticias"
+        android:icon="@drawable/noticias"
+        android:title="@string/menu_noticias" />
+    <item
+        android:id="@+id/nav_favoritos"
+        android:icon="@drawable/favorito"
+        android:title="@string/menu_favoritos" />
+    <item
+        android:id="@+id/nav_acerca_de"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/menu_acerca_de" />
+</menu>

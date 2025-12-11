@@ -23,7 +23,7 @@ class NoticiasActivity : BaseActivity() {
         binding.toolbar.title = getString(R.string.menu_noticias)
         setSupportActionBar(binding.toolbar)
 
-        setupBottomNavigation(binding.bottomNav, R.id.nav_noticias)
+        setupBottomNavigation(binding.bottomNavigation, R.id.nav_noticias)
 
         val adapter = NoticiaAdapter(emptyList()) { noticia ->
             val intent = Intent(this, NoticiaExpandidaActivity::class.java)

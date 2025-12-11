@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Aplicacion_InfoSport_Recuperacion">
         <activity
+            android:name="view.NoticiaExpandidaActivity"
+            android:exported="false" />
+        <activity
+            android:name="view.LigaActivity"
+            android:exported="false" />
+        <activity
             android:name="view.AcercaDeActivity"
             android:exported="false" />
         <activity

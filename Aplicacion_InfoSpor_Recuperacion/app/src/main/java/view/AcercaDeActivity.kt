@@ -14,7 +14,6 @@ class AcercaDeActivity : AppCompatActivity() {
         val binding = ActivityAcercaDeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Simplemente un botón de volver, el texto está en el XML
-        binding.btnVolver.setOnClickListener { finish() }
+        binding.toolbar.setNavigationOnClickListener { finish() }
     }
 }
