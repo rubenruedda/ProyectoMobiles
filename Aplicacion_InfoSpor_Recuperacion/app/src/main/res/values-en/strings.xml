@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InfoSport</string>
+    <string name="menu_inicio">Home</string>
+    <string name="menu_competiciones">Leagues</string>
+    <string name="menu_noticias">News</string>
+    <string name="menu_favoritos">Favorites</string>
+    <string name="menu_acerca_de">About</string>
+    <string name="welcome_message">Welcome to InfoSport</string>
+    <string name="partidos_hoy">Today\'s Matches</string>
+    <string name="ver_detalles">View details</string>
+    <string name="sin_datos">No data available</string>
+    <string name="cargando">Loading data...</string>
+    <string name="favorito_agregado">Added to favorites</string>
+    <string name="favorito_eliminado">Removed from favorites</string>
+    <string name="acerca_de_desc">InfoSport v1.0\nDeveloped for Android class.\nAn app for football lovers.</string>
+</resources>
