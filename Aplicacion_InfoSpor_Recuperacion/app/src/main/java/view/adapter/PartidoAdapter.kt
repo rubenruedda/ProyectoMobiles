@@ -2,21 +2,16 @@ package view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aplicacion_infosport.databinding.ItemPartidoBinding
 import model.Partido
 
 class PartidoAdapter(
-    private var listaPartidos: List<Partido>,
     private val onPartidoClick: (Partido) -> Unit
-) : RecyclerView.Adapter<PartidoAdapter.PartidoViewHolder>() {
-
-    // Método para actualizar datos desde la Activity
-    fun actualizarDatos(nuevaLista: List<Partido>) {
-        listaPartidos = nuevaLista
-        notifyDataSetChanged()
-    }
+) : ListAdapter<Partido, PartidoAdapter.PartidoViewHolder>(PartidoDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartidoViewHolder {
         val binding = ItemPartidoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,30 +19,32 @@ class PartidoAdapter(
     }
 
     override fun onBindViewHolder(holder: PartidoViewHolder, position: Int) {
-        holder.bind(listaPartidos[position])
+        holder.bind(getItem(position))
     }
-
-    override fun getItemCount(): Int = listaPartidos.size
 
     inner class PartidoViewHolder(private val binding: ItemPartidoBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(partido: Partido) {
             binding.tvLocal.text = partido.nombreLocal
             binding.tvVisitante.text = partido.nombreVisitante
-            binding.tvHora.text = partido.hora
 
-            // Resultado o "VS"
-            if (partido.golesLocal != null) {
-                binding.tvResultado.text = "${partido.golesLocal} - ${partido.golesVisitante}"
+            // Lógica visual: Si tiene marcador, muéstralo. Si no, muestra la hora.
+            if (partido.marcadorLocal != null) {
+                binding.tvResultado.text = "${partido.marcadorLocal} - ${partido.marcadorVisitante}"
+                binding.tvHora.text = "Finalizado"
             } else {
                 binding.tvResultado.text = "VS"
+                binding.tvHora.text = partido.hora
             }
 
-            // Cargar imágenes con Glide
             Glide.with(binding.root.context).load(partido.escudoLocal).into(binding.imgLocal)
             Glide.with(binding.root.context).load(partido.escudoVisitante).into(binding.imgVisitante)
 
-            // Click Listener
             binding.root.setOnClickListener { onPartidoClick(partido) }
         }
+    }
+
+    class PartidoDiffCallback : DiffUtil.ItemCallback<Partido>() {
+        override fun areItemsTheSame(oldItem: Partido, newItem: Partido): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Partido, newItem: Partido): Boolean = oldItem == newItem
     }
 }

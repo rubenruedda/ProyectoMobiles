@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aplicacion_infosport.databinding.ItemLigaBinding
+import com.example.aplicacion_infosport.databinding.ItemPaisHeaderBinding
 import model.Liga
 import viewModel.CompeticionItem
 

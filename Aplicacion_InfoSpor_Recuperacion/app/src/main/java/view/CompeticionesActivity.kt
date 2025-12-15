@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aplicacion_infosport.R
 import com.example.aplicacion_infosport.databinding.ActivityCompeticionesBinding
+import view.adapter.CompeticionesAdapter
 import view.adapter.LigaAdapter
 import viewModel.CompeticionesViewModel
 import viewModel.InicioViewModel
@@ -31,7 +32,7 @@ class CompeticionesActivity : BaseActivity() {
 
         setupBottomNavigation(binding.bottomNavigation, R.id.nav_competiciones)
 
-        val adapter = CompeticionAdapter { liga ->
+        val adapter = CompeticionesAdapter { liga ->
             val intent = Intent(this, LigaActivity::class.java)
             intent.putExtra("LIGA_ID", liga.id)
             intent.putExtra("LIGA_NOMBRE", liga.nombre)

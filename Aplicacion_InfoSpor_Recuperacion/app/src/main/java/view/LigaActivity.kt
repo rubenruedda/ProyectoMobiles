@@ -1,5 +1,6 @@
 package view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -10,12 +11,16 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aplicacion_infosport.R
 import com.example.aplicacion_infosport.databinding.ActivityLigaBinding
+import view.adapter.ClasificacionAdapter
 import view.adapter.PartidoAdapter
+import viewModel.LigaViewModel
 
 class LigaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLigaBinding
     private val viewModel: LigaViewModel by viewModels()
+
+    // Declaramos los adaptadores
     private lateinit var partidosAdapter: PartidoAdapter
     private lateinit var clasificacionAdapter: ClasificacionAdapter
 
@@ -24,13 +29,15 @@ class LigaActivity : AppCompatActivity() {
         binding = ActivityLigaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 1. Recoger datos del Intent
         val ligaId = intent.getStringExtra("LIGA_ID") ?: return
         val ligaNombre = intent.getStringExtra("LIGA_NOMBRE")
 
+        // 2. Configurar Toolbar
         binding.toolbar.title = ligaNombre
         binding.toolbar.setNavigationOnClickListener { finish() }
 
-        // Menú de favoritos en la toolbar
+        // Configurar clic en el menú (Corazón de favorito)
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_toggle_favorito -> {
@@ -41,34 +48,40 @@ class LigaActivity : AppCompatActivity() {
             }
         }
 
+        // 3. Inicializar ViewModel
         viewModel.setLigaId(ligaId)
 
-        // Configurar Recycler de Partidos (Resultados)
-        partidosAdapter = PartidoAdapter { /* Click en partido */ } // Asegúrate de que PartidoAdapter también sea ListAdapter
+        // 4. Configurar RecyclerView de Partidos (Ahora PartidoAdapter es ListAdapter)
+        partidosAdapter = PartidoAdapter { partido ->
+            // Navegar al detalle del partido
+            val intent = Intent(this, InfoPartidoActivity::class.java)
+            intent.putExtra("PARTIDO_ID", partido.id)
+            startActivity(intent)
+        }
         binding.rvPartidosLiga.layoutManager = LinearLayoutManager(this)
         binding.rvPartidosLiga.adapter = partidosAdapter
 
-        // Configurar Recycler de Clasificación
+        // 5. Configurar RecyclerView de Clasificación
         clasificacionAdapter = ClasificacionAdapter()
         binding.rvClasificacion.layoutManager = LinearLayoutManager(this)
         binding.rvClasificacion.adapter = clasificacionAdapter
 
-        // Lógica de botones "Pestañas"
+        // 6. Lógica de botones (Pestañas manuales)
         binding.btnResultados.setOnClickListener {
             binding.rvPartidosLiga.visibility = View.VISIBLE
             binding.rvClasificacion.visibility = View.GONE
+            // Cambiar estilo de botones opcionalmente para indicar selección
         }
+
         binding.btnClasificacion.setOnClickListener {
             binding.rvPartidosLiga.visibility = View.GONE
             binding.rvClasificacion.visibility = View.VISIBLE
         }
 
-        // Observar datos
+        // 7. Observar datos del ViewModel
         viewModel.resultados.observe(this) { partidos ->
-            // Si PartidoAdapter es ListAdapter usa submitList, si no, actualiza lista interna
-            // partidosAdapter.submitList(partidos)
-            // Si usas el adapter antiguo con lista manual:
-            partidosAdapter.actualizarDatos(partidos)
+            // Ahora sí funciona submitList porque actualizamos el Adapter
+            partidosAdapter.submitList(partidos)
         }
 
         viewModel.clasificacion.observe(this) { clasificacion ->
@@ -76,9 +89,9 @@ class LigaActivity : AppCompatActivity() {
         }
 
         viewModel.liga.observe(this) { liga ->
-            // Actualizar icono de favorito
-            val icon = if (liga.esFavorita) R.drawable.favorito else R.drawable.favorito_borde
-            binding.toolbar.menu.findItem(R.id.menu_toggle_favorito)?.setIcon(icon)
+            // Cambiar el icono del corazón según estado
+            val iconRes = if (liga.esFavorita) R.drawable.favorito else R.drawable.favorito_borde
+            binding.toolbar.menu.findItem(R.id.menu_toggle_favorito)?.setIcon(iconRes)
         }
     }
 }

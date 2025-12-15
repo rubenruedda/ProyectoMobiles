@@ -14,10 +14,11 @@ import view.adapter.LigaAdapter
 import viewModel.FavoritoViewModel
 
 
-class FavoritosActivity : BaseActivity() {
+class FavoritosActivity : BaseActivity() { // Hereda de BaseActivity
 
     private lateinit var binding: ActivityFavoritosBinding
     private val viewModel: FavoritoViewModel by viewModels()
+    private lateinit var adapter: LigaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +28,21 @@ class FavoritosActivity : BaseActivity() {
         binding.toolbar.title = getString(R.string.menu_favoritos)
         setSupportActionBar(binding.toolbar)
 
-        setupBottomNavigation(binding.bottomNav, R.id.nav_favoritos)
+        setupBottomNavigation(binding.bottomNavigation, R.id.nav_favoritos)
 
-        val adapter = LigaAdapter(emptyList()) { liga ->
+        // CORRECCIÓN AQUÍ: No pasamos lista, solo el listener
+        adapter = LigaAdapter { liga ->
             val intent = Intent(this, LigaActivity::class.java)
             intent.putExtra("LIGA_ID", liga.id)
             intent.putExtra("LIGA_NOMBRE", liga.nombre)
             startActivity(intent)
         }
+
         binding.rvFavoritos.layoutManager = LinearLayoutManager(this)
         binding.rvFavoritos.adapter = adapter
 
-        viewModel.ligasFavoritas.observe(this) { adapter.actualizarDatos(it) }
+        viewModel.ligasFavoritas.observe(this) { ligas ->
+            adapter.submitList(ligas) // Usamos submitList
+        }
     }
 }

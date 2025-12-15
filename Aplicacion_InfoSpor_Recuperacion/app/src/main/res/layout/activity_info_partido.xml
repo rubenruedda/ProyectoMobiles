@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_background">
+    android:orientation="vertical"
+    android:background="@color/primary_dark">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/arrow_back"
-            app:title="Detalles del Partido"/>
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/secondary_dark"
+        android:paddingHorizontal="16dp">
 
-    <androidx.core.widget.NestedScrollView
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalle del Partido"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,22 +47,95 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <include layout="@layout/item_partido" android:id="@+id/marcador_layout"/>
-
-            <TextView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Eventos"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:id="@+id/imgLocal"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        tools:src="@mipmap/ic_launcher"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tvResultado"/>
+
+                    <TextView
+                        android:id="@+id/tvLocal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Local"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/imgLocal"
+                        app:layout_constraintStart_toStartOf="@id/imgLocal"
+                        app:layout_constraintEnd_toEndOf="@id/imgLocal"/>
+
+                    <ImageView
+                        android:id="@+id/imgVisitante"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        tools:src="@mipmap/ic_launcher"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvResultado"/>
+
+                    <TextView
+                        android:id="@+id/tvVisitante"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Visitante"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/imgVisitante"
+                        app:layout_constraintStart_toStartOf="@id/imgVisitante"
+                        app:layout_constraintEnd_toEndOf="@id/imgVisitante"/>
+
+                    <TextView
+                        android:id="@+id/tvResultado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="2 - 1"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_green"
+                        app:layout_constraintTop_toTopOf="@id/imgLocal"
+                        app:layout_constraintBottom_toBottomOf="@id/imgLocal"
+                        app:layout_constraintStart_toEndOf="@id/imgLocal"
+                        app:layout_constraintEnd_toStartOf="@id/imgVisitante"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eventos del Partido"
                 android:textColor="@color/primary_green"
-                android:textSize="20sp"
-                android:layout_marginTop="16dp"/>
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvEventos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                tools:listitem="@layout/item_evento_partido"
                 android:nestedScrollingEnabled="false"/>
 
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </ScrollView>
+</LinearLayout>

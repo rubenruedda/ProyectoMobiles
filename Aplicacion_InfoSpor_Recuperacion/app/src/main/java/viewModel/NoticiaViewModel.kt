@@ -28,4 +28,8 @@ class NoticiaViewModel(application: Application) : AndroidViewModel(application)
     fun setSearchQuery(query: String) {
         _searchQuery.value = query
     }
+
+    fun obtenerNoticiaPorId(noticiaId: Int): LiveData<Noticia> {
+        return repository.obtenerNoticiaPorId(noticiaId)
+    }
 }
