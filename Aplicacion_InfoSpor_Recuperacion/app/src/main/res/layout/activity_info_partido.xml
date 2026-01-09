@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/primary_dark">
+    android:background="@color/app_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/secondary_dark"
+        android:background="@color/app_background"
         android:paddingHorizontal="16dp">
 
         <ImageButton
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/arrow_back"
-            app:tint="@color/white"
+            app:tint="@color/primary_green"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Detalle del Partido"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_green"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/btnBack"
@@ -74,7 +74,7 @@
                         android:layout_height="wrap_content"
                         tools:text="Local"
                         android:gravity="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary_dark"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
                         app:layout_constraintTop_toBottomOf="@id/imgLocal"
@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         tools:text="Visitante"
                         android:gravity="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary_dark"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
                         app:layout_constraintTop_toBottomOf="@id/imgVisitante"
@@ -110,7 +110,7 @@
                         tools:text="2 - 1"
                         android:textSize="32sp"
                         android:textStyle="bold"
-                        android:textColor="@color/primary_green"
+                        android:textColor="@color/primary_dark"
                         app:layout_constraintTop_toTopOf="@id/imgLocal"
                         app:layout_constraintBottom_toBottomOf="@id/imgLocal"
                         app:layout_constraintStart_toEndOf="@id/imgLocal"

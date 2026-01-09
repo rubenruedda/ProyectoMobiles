@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Título Noticia"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:maxLines="2"
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Fuente - Fecha"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/primary_green"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"/>
         </LinearLayout>

@@ -11,7 +11,7 @@
     android:layout_width="30dp"
     android:layout_height="wrap_content"
     android:text="1"
-    android:textColor="@color/text_secondary"
+    android:textColor="@color/white"
     android:textStyle="bold"
     android:gravity="center"/>
 
@@ -46,6 +46,6 @@
         android:text="32"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@color/primary_green"/>
+        android:textColor="@color/white"/>
 
 </LinearLayout>

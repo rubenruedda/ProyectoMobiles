@@ -18,9 +18,9 @@ data class Partido(
     @ColumnInfo(name = "marcador_local") val marcadorLocal: String? = null,
     @ColumnInfo(name = "marcador_visitante") val marcadorVisitante: String? = null,
     val fecha: String, // Formato "dd/MM/yyyy"
-    val hora: String
+    val hora: String,
+    @ColumnInfo(name = "es_favorito") var esFavorito: Boolean = false
 ) : Serializable {
-    // Propiedades helper para la UI
     val golesLocal get() = marcadorLocal
     val golesVisitante get() = marcadorVisitante
 }

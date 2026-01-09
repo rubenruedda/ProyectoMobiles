@@ -8,7 +8,7 @@ import java.io.Serializable
 @Entity(tableName = "liga")
 data class Liga(
     @PrimaryKey
-    val id: String, // String para coincidir con PreCargaDatos
+    val id: String,
     val nombre: String,
     @ColumnInfo(name = "pais_nombre") val paisNombre: String,
     @ColumnInfo(name = "logo_url") val logoUrl: String? = null,
