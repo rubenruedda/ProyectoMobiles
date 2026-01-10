@@ -24,7 +24,18 @@ class InfoPartidoActivity : AppCompatActivity() {
         val partidoId = intent.getIntExtra("PARTIDO_ID", -1)
         if (partidoId == -1) finish()
 
-        binding.btnBack.setOnClickListener { finish() }
+        binding.toolbar.setNavigationOnClickListener { finish() }
+
+        // Configurar clic en el menú (Corazón de favorito)
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_toggle_favorito -> {
+                    viewModel.toggleFavorito()
+                    true
+                }
+                else -> false
+            }
+        }
 
         viewModel.setPartidoId(partidoId)
         viewModel.partido.observe(this) { partido ->
@@ -36,6 +47,12 @@ class InfoPartidoActivity : AppCompatActivity() {
                 Glide.with(this).load(it.escudoLocal).into(binding.imgLocal)
                 Glide.with(this).load(it.escudoVisitante).into(binding.imgVisitante)
             }
+        }
+
+        viewModel.partido.observe(this) { partido ->
+            // Cambiar el icono del corazón según estado
+            val iconRes = if (partido.esFavorita) R.drawable.favorito else R.drawable.favorito_borde
+            binding.toolbar.menu.findItem(R.id.menu_toggle_favorito)?.setIcon(iconRes)
         }
     }
 }

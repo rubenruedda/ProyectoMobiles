@@ -20,7 +20,7 @@
             app:navigationIcon="@drawable/arrow_back"
             app:title="Nombre Liga"
             app:titleTextColor="@color/primary_green"
-            app:menu="@menu/liga_menu"/>
+            app:menu="@menu/favorito_menu"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout

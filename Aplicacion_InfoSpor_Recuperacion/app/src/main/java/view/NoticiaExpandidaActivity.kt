@@ -25,6 +25,15 @@ class NoticiaExpandidaActivity : AppCompatActivity() {
         if (noticiaId == -1) finish()
 
         binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_toggle_favorito -> {
+                    viewModel.toggleFavorito()
+                    true
+                }
+                else -> false
+            }
+        }
 
         viewModel.obtenerNoticiaPorId(noticiaId).observe(this) { noticia ->
             if (noticia != null) {
@@ -34,6 +43,12 @@ class NoticiaExpandidaActivity : AppCompatActivity() {
 
                 Glide.with(this).load(noticia.urlImagen).into(binding.ivImagenDetalle)
             }
+        }
+
+        viewModel.noticia.observe(this) { noticia ->
+            // Cambiar el icono del corazón según estado
+            val iconRes = if (noticia.esFavorita) R.drawable.favorito else R.drawable.favorito_borde
+            binding.toolbar.menu.findItem(R.id.menu_toggle_favorito)?.setIcon(iconRes)
         }
     }
 }

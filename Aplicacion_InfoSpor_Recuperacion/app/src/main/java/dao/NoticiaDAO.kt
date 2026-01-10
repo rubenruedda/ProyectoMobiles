@@ -5,12 +5,16 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import model.Noticia
 
 @Dao
 interface NoticiaDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertarNoticias(noticias: List<Noticia>)
+
+    @Update
+    suspend fun actualizarNoticia(noticia: Noticia)
 
     @Query("SELECT * FROM noticia ORDER BY fecha_publicacion DESC")
     fun obtenerTodasLasNoticias(): LiveData<List<Noticia>>
@@ -21,4 +25,7 @@ interface NoticiaDAO {
 
     @Query("SELECT * FROM noticia WHERE id = :noticiaId LIMIT 1")
     fun obtenerNoticiaPorId(noticiaId: Int): LiveData<Noticia>
+
+    @Query("SELECT * FROM noticia WHERE es_favorita = 1")
+    fun obtenerNoticiasFavoritas(): LiveData<List<Noticia>>
 }

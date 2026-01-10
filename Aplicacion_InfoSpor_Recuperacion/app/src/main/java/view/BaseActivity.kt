@@ -21,6 +21,7 @@ open class BaseActivity : AppCompatActivity() {
                     R.id.nav_competiciones -> navegar(CompeticionesActivity::class.java)
                     R.id.nav_noticias -> navegar(NoticiasActivity::class.java)
                     R.id.nav_favoritos -> navegar(FavoritosActivity::class.java)
+                    R.id.nav_acerca_de -> navegar(AcercaDeActivity::class.java)
                 }
             }
             true
@@ -29,7 +30,7 @@ open class BaseActivity : AppCompatActivity() {
 
     private fun navegar(destino: Class<*>) {
         startActivity(Intent(this, destino))
-        overridePendingTransition(0, 0) // Elimina animación para efecto "pestaña"
-        finish() // Cierra la activity actual
+        overridePendingTransition(0, 0)
+        finish()
     }
 }

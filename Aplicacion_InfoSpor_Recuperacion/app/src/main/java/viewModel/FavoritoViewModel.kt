@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData
 import db.AppDataBase
 import model.Equipo
 import model.Liga
+import model.Noticia
+import model.Partido
 import respository.InfoSportRepository
 
 class FavoritoViewModel(application: Application) : AndroidViewModel(application) {
@@ -24,7 +26,12 @@ class FavoritoViewModel(application: Application) : AndroidViewModel(application
     private val repository: InfoSportRepository
 
     val ligasFavoritas: LiveData<List<Liga>>
-    val equiposFavoritos: LiveData<List<Equipo>>
+
+    val noticiasFavoritas: LiveData<List<Noticia>>
+
+    val partidosFavoritos: LiveData<List<Partido>>
+
+
 
     init {
         // Inicialización del Repositorio
@@ -34,6 +41,7 @@ class FavoritoViewModel(application: Application) : AndroidViewModel(application
 
         // Obtiene los LiveData de las listas de favoritos
         ligasFavoritas = repository.obtenerLigasFavoritas()
-        equiposFavoritos = repository.obtenerEquiposFavoritos()
+        noticiasFavoritas = repository.obtenerNoticiasFavoritas()
+        partidosFavoritos = repository.obtenerPartidosFavoritos()
     }
 }

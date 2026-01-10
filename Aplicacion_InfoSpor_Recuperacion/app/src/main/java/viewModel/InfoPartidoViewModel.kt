@@ -7,7 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
+import androidx.lifecycle.viewModelScope
 import db.AppDataBase
+import kotlinx.coroutines.launch
 import model.Alineacion
 import model.Evento
 import model.Partido
@@ -57,14 +59,6 @@ class InfoPartidoViewModel(application: Application) : AndroidViewModel(applicat
 
                 // 3. Obtener Alineación Visitante
                 val alineacionVisitanteLiveData = repository.obtenerAlineacionPorEquipo(it.id, it.equipoVisitanteId)
-
-                // Aquí necesitarías más lógica compleja con MediatorLiveData para esperar
-                // a que los 4 LiveData se carguen y combinarlos en PartidoDetalle.
-                // Por ahora, solo usaremos el LiveData del Partido básico para simplificar
-                // y haremos el mapeo simple en la vista, o usaremos la versión LiveData<Partido> del Repositorio.
-
-                // Por simplicidad, el Fragment observará el LiveData<Partido> y usará
-                // las otras funciones del ViewModel si necesita esos detalles.
             }
         }
     }
@@ -87,5 +81,14 @@ class InfoPartidoViewModel(application: Application) : AndroidViewModel(applicat
 
     fun getAlineacionVisitante(partidoId: Int, equipoId: Int): LiveData<List<Alineacion>> {
         return repository.obtenerAlineacionPorEquipo(partidoId, equipoId)
+    }
+
+    fun toggleFavorito() {
+        partido.value?.let { partidoActual ->
+            viewModelScope.launch {
+                partidoActual.esFavorita = !partidoActual.esFavorita
+                repository.actualizarPartido(partidoActual)
+            }
+        }
     }
 }
