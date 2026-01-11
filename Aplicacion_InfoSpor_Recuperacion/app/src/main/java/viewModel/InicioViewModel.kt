@@ -23,7 +23,7 @@ class InicioViewModel(application: Application) : AndroidViewModel(application) 
 
     init {
         val db = AppDataBase.getDatabase(application)
-        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao())
+        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao(), db.favoritoDao())
 
         ligasPrincipales = repository.obtenerTodasLasLigas()
 

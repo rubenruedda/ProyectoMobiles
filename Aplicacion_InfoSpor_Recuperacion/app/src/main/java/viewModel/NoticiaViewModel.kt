@@ -21,7 +21,12 @@ class NoticiaViewModel(application: Application) : AndroidViewModel(application)
 
     init {
         val db = AppDataBase.getDatabase(application)
-        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao())
+        repository = InfoSportRepository(
+            db.partidoDao(),
+            db.ligaDao(),
+            db.noticiaDao(),
+            db.favoritoDao()
+        )
 
         noticias = _searchQuery.switchMap { query ->
             if (query.isBlank()) repository.obtenerTodasLasNoticias()
@@ -37,11 +42,16 @@ class NoticiaViewModel(application: Application) : AndroidViewModel(application)
         return repository.obtenerNoticiaPorId(noticiaId)
     }
 
-    fun toggleFavorito() {
-        noticia.value?.let { noticiasActual ->
-            viewModelScope.launch {
-                noticiasActual.esFavorita = !noticiasActual.esFavorita
-                repository.actualizarNoticia(noticiasActual)
+    fun esFavorito(partidoId: Int): LiveData<Boolean> {
+        return repository.esFavorito("PARTIDO", partidoId.toString())
+    }
+
+    fun toggleFavorito(partidoId: Int, esActualmenteFavorito: Boolean) {
+        viewModelScope.launch {
+            if (esActualmenteFavorito) {
+                repository.eliminarFavorito("NOTICIA", partidoId.toString())
+            } else {
+                repository.agregarFavorito("NOTICIA", partidoId.toString())
             }
         }
     }

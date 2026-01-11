@@ -1,6 +1,7 @@
 package respository
 
 import androidx.lifecycle.LiveData
+import dao.FavoritoDAO
 import dao.LigaDAO
 import dao.NoticiaDAO
 import dao.PartidoDAO
@@ -9,7 +10,8 @@ import model.*
 class InfoSportRepository (
     private val partidoDao: PartidoDAO,
     private val ligaDao: LigaDAO,
-    private val noticiaDao: NoticiaDAO
+    private val noticiaDao: NoticiaDAO,
+    private val favoritoDao: FavoritoDAO
 ) {
     // --- Partidos ---
     fun obtenerPartidosDeHoy(fechaHoy: String): LiveData<List<Partido>> = partidoDao.obtenerPartidosDeHoy(fechaHoy)
@@ -38,4 +40,20 @@ class InfoSportRepository (
     suspend fun actualizarLiga(liga: Liga) = ligaDao.actualizarLiga(liga)
     suspend fun actualizarPartido(partido: Partido) = partidoDao.actualizarPartido(partido)
     suspend fun actualizarNoticia(noticia: Noticia) = noticiaDao.actualizarNoticia(noticia)
+
+    // --- LÓGICA DE FAVORITOS GENÉRICA ---
+    suspend fun agregarFavorito(tipo: String, id: String) {
+        favoritoDao.insert(Favorito(tipo, id))
+    }
+    suspend fun eliminarFavorito(tipo: String, id: String) {
+        favoritoDao.delete(Favorito(tipo, id))
+    }
+    fun esFavorito(tipo: String, id: String): LiveData<Boolean> {
+        return favoritoDao.esFavorito(tipo, id)
+    }
+
+    // --- OBTENER LISTAS DE FAVORITOS ---
+    val ligasFavoritas: LiveData<List<Liga>> = ligaDao.obtenerLigasFavoritas()
+    val partidosFavoritos: LiveData<List<Partido>> = partidoDao.obtenerPartidosFavoritos()
+    val noticiasFavoritas: LiveData<List<Noticia>> = noticiaDao.obtenerNoticiasFavoritas()
 }

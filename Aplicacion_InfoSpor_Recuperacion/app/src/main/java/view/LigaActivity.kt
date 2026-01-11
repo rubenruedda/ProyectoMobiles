@@ -41,7 +41,7 @@ class LigaActivity : AppCompatActivity() {
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_toggle_favorito -> {
-                    viewModel.toggleFavorito()
+                    viewModel.toggleFavorito(ligaId.toInt(), menuItem.isChecked)
                     true
                 }
                 else -> false

@@ -24,31 +24,25 @@ class InfoPartidoViewModel(application: Application) : AndroidViewModel(applicat
             return InfoSportRepository(
                 partidoDao = db.partidoDao(),
                 ligaDao = db.ligaDao(),
-                noticiaDao = db.noticiaDao()
+                noticiaDao = db.noticiaDao(),
+                favoritoDao = db.favoritoDao()
             )
         }
 
     private val repository: InfoSportRepository
 
-    // ID interno del partido a consultar
     private val _partidoId = MutableLiveData<Int>()
 
-    // LiveData que obtiene el Partido básico al cambiar _partidoId
     val partido: LiveData<Partido> = _partidoId.switchMap { id ->
         repository.obtenerPartidoPorId(id)
     }
 
-    // LiveData combinado: contendrá el objeto PartidoDetalle completo
     val partidoDetalleCompleto = MediatorLiveData<PartidoDetalle>()
 
     init {
         val context = application.applicationContext
         val db = AppDataBase.getDatabase(context)
-        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao())
-
-        // Lógica de combinación de LiveData:
-        // Cuando el LiveData del Partido básico cambia, usamos su información (IDs de equipo)
-        // para lanzar las consultas de Eventos y Alineaciones, y construir el objeto final.
+        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao(), db.favoritoDao())
         partidoDetalleCompleto.addSource(partido) { partidoActual ->
             partidoActual?.let {
                 // 1. Obtener Eventos
@@ -63,7 +57,19 @@ class InfoPartidoViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    // Función llamada por la Activity para establecer el partido a consultar
+    fun esFavorito(partidoId: Int): LiveData<Boolean> {
+        return repository.esFavorito("PARTIDO", partidoId.toString())
+    }
+
+    fun toggleFavorito(partidoId: Int, esActualmenteFavorito: Boolean) {
+        viewModelScope.launch {
+            if (esActualmenteFavorito) {
+                repository.eliminarFavorito("PARTIDO", partidoId.toString())
+            } else {
+                repository.agregarFavorito("PARTIDO", partidoId.toString())
+            }
+        }
+    }
     fun setPartidoId(partidoId: Int) {
         if (_partidoId.value != partidoId) {
             _partidoId.value = partidoId
@@ -81,14 +87,5 @@ class InfoPartidoViewModel(application: Application) : AndroidViewModel(applicat
 
     fun getAlineacionVisitante(partidoId: Int, equipoId: Int): LiveData<List<Alineacion>> {
         return repository.obtenerAlineacionPorEquipo(partidoId, equipoId)
-    }
-
-    fun toggleFavorito() {
-        partido.value?.let { partidoActual ->
-            viewModelScope.launch {
-                partidoActual.esFavorita = !partidoActual.esFavorita
-                repository.actualizarPartido(partidoActual)
-            }
-        }
     }
 }

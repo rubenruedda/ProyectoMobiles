@@ -14,7 +14,7 @@ import view.adapter.*
 import viewModel.FavoritoViewModel
 
 
-class FavoritosActivity : BaseActivity() { // Hereda de BaseActivity
+class FavoritosActivity : BaseActivity() {
 
     private lateinit var binding: ActivityFavoritosBinding
     private val viewModel: FavoritoViewModel by viewModels()
@@ -30,31 +30,33 @@ class FavoritosActivity : BaseActivity() { // Hereda de BaseActivity
 
         binding.toolbar.title = getString(R.string.menu_favoritos)
         setSupportActionBar(binding.toolbar)
-
         setupBottomNavigation(binding.bottomNavigation, R.id.nav_favoritos)
 
         // CORRECCIÓN AQUÍ: No pasamos lista, solo el listener
-        adapterLiga = LigaAdapter { liga ->
+        val ligaAdapter = LigaAdapter { liga ->
             val intent = Intent(this, LigaActivity::class.java)
             intent.putExtra("LIGA_ID", liga.id)
             intent.putExtra("LIGA_NOMBRE", liga.nombre)
             startActivity(intent)
         }
+        binding.rvFavLigas.layoutManager = LinearLayoutManager(this)
+        binding.rvFavLigas.adapter = ligaAdapter
 
-        adapterNoticia = NoticiaAdapter { noticia ->
+        val noticiaAdapter = NoticiaAdapter { noticia ->
             val intent = Intent(this, NoticiaExpandidaActivity::class.java)
             intent.putExtra("NOTICIA_ID", noticia.id)
             startActivity(intent)
         }
+        binding.rvFavNoticias.layoutManager = LinearLayoutManager(this)
+        binding.rvFavNoticias.adapter = noticiaAdapter
 
-        adapterPartido = PartidoAdapter { partido ->
+        val partidoAdapter = PartidoAdapter { partido ->
             val intent = Intent(this, InfoPartidoActivity::class.java)
             intent.putExtra("PARTIDO_ID", partido.id)
             startActivity(intent)
         }
-
-        binding.rvFavoritos.layoutManager = LinearLayoutManager(this)
-        binding.rvFavoritos.adapter = adapter
+        binding.rvFavPartidos.layoutManager = LinearLayoutManager(this)
+        binding.rvFavPartidos.adapter = partidoAdapter
 
         viewModel.ligasFavoritas.observe(this) { ligas ->
             adapterLiga.submitList(ligas) // Usamos submitList

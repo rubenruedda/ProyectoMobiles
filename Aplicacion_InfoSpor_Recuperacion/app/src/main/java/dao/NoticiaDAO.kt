@@ -26,6 +26,6 @@ interface NoticiaDAO {
     @Query("SELECT * FROM noticia WHERE id = :noticiaId LIMIT 1")
     fun obtenerNoticiaPorId(noticiaId: Int): LiveData<Noticia>
 
-    @Query("SELECT * FROM noticia WHERE es_favorita = 1")
+    @Query("SELECT * FROM noticia WHERE id IN (SELECT refId FROM favoritos WHERE tipo = 'NOTICIA')")
     fun obtenerNoticiasFavoritas(): LiveData<List<Noticia>>
 }

@@ -23,7 +23,7 @@ class CompeticionesViewModel(application: Application) : AndroidViewModel(applic
 
     init {
         val db = AppDataBase.getDatabase(application)
-        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao())
+        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao(), db.favoritoDao())
 
         listaAgrupada = _searchQuery.switchMap { query ->
             val ligasLive = if (query.isBlank()) repository.obtenerTodasLasLigas() else repository.buscarLigas(query)

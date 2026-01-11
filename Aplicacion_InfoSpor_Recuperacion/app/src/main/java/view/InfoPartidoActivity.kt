@@ -30,7 +30,7 @@ class InfoPartidoActivity : AppCompatActivity() {
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_toggle_favorito -> {
-                    viewModel.toggleFavorito()
+                    viewModel.toggleFavorito(partidoId, menuItem.isChecked)
                     true
                 }
                 else -> false

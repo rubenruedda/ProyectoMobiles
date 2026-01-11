@@ -36,7 +36,7 @@ interface LigaDAO {
     @Query("SELECT * FROM clasificacion WHERE liga_id = :ligaId ORDER BY posicion ASC")
     fun obtenerClasificacionPorLiga(ligaId: String): LiveData<List<Clasificacion>>
 
-    @Query("SELECT * FROM liga WHERE es_favorita = 1")
+    @Query("SELECT * FROM liga WHERE id IN (SELECT refId FROM favoritos WHERE tipo = 'LIGA')")
     fun obtenerLigasFavoritas(): LiveData<List<Liga>>
 
     @Query("SELECT * FROM equipo WHERE es_favorito = 1")
