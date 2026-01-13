@@ -48,11 +48,43 @@ abstract class AppDataBase : RoomDatabase() {
                     AppDataBase::class.java,
                     "info_sports_db_v2"
                 )
+                    .addCallback(roomDatabaseCallback())
                     .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance
             }
+        }
+
+        private fun roomDatabaseCallback(): Callback {
+            return object : Callback() {
+                // Se ejecuta SOLO cuando la base de datos se crea por primera vez
+                override fun onCreate(db: SupportSQLiteDatabase) {
+                    super.onCreate(db)
+
+                    INSTANCE?.let { database ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            poblarBaseDeDatos(database)
+                        }
+                    }
+                }
+            }
+        }
+
+        private suspend fun poblarBaseDeDatos(db: AppDataBase) {
+            // Limpiar todo (por seguridad)
+            // db.clearAllTables() // Opcional si usamos onCreate
+
+            // Insertar datos masivos
+            db.ligaDao().insertarLigas(PreCargaDatos.LIGAS)
+            db.ligaDao().insertarEquipos(PreCargaDatos.EQUIPOS)
+            // db.ligaDao().insertarClasificacion(PreCargaDatos.CLASIFICACION) // Si tienes datos de clasificación
+
+            db.partidoDao().insertarPartidos(PreCargaDatos.PARTIDOS)
+            db.partidoDao().insertarEventos(PreCargaDatos.EVENTOS)
+            db.partidoDao().insertarAlineaciones(PreCargaDatos.ALINEACIONES)
+
+            db.noticiaDao().insertarNoticias(PreCargaDatos.NOTICIAS)
         }
     }
 }

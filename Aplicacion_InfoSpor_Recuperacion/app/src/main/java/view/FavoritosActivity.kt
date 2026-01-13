@@ -1,4 +1,4 @@
-package view
+    package view
 
 import android.content.Intent
 import android.os.Bundle
@@ -39,22 +39,23 @@ class FavoritosActivity : BaseActivity() {
             intent.putExtra("LIGA_NOMBRE", liga.nombre)
             startActivity(intent)
         }
-        binding.rvFavLigas.layoutManager = LinearLayoutManager(this)
-        binding.rvFavLigas.adapter = ligaAdapter
 
         val noticiaAdapter = NoticiaAdapter { noticia ->
             val intent = Intent(this, NoticiaExpandidaActivity::class.java)
             intent.putExtra("NOTICIA_ID", noticia.id)
             startActivity(intent)
         }
-        binding.rvFavNoticias.layoutManager = LinearLayoutManager(this)
-        binding.rvFavNoticias.adapter = noticiaAdapter
 
         val partidoAdapter = PartidoAdapter { partido ->
             val intent = Intent(this, InfoPartidoActivity::class.java)
             intent.putExtra("PARTIDO_ID", partido.id)
             startActivity(intent)
         }
+
+        binding.rvFavLigas.layoutManager = LinearLayoutManager(this)
+        binding.rvFavLigas.adapter = ligaAdapter
+        binding.rvFavNoticias.layoutManager = LinearLayoutManager(this)
+        binding.rvFavNoticias.adapter = noticiaAdapter
         binding.rvFavPartidos.layoutManager = LinearLayoutManager(this)
         binding.rvFavPartidos.adapter = partidoAdapter
 
