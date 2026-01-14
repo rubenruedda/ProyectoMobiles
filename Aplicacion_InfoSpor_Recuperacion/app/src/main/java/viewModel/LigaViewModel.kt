@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import db.AppDataBase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import model.Clasificacion
 import model.Liga
@@ -17,6 +18,7 @@ class LigaViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: InfoSportRepository
     private val _ligaId = MutableLiveData<String>()
+    private val db = AppDataBase.getDatabase(application)
 
     val liga: LiveData<Liga> = _ligaId.switchMap { id -> repository.obtenerLigaPorId(id) }
 
@@ -53,6 +55,12 @@ class LigaViewModel(application: Application) : AndroidViewModel(application) {
             } else {
                 repository.agregarFavorito("LIGA", partidoId.toString())
             }
+        }
+    }
+
+    fun actualizarFavoritoPartido(partido: Partido){
+        viewModelScope.launch(Dispatchers.IO) {
+            db.partidoDao().actualizarPartido(partido)
         }
     }
 }

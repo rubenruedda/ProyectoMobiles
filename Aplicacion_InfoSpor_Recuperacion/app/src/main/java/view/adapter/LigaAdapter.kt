@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.aplicacion_infosport.R
 import com.example.aplicacion_infosport.databinding.ItemLigaBinding
 import model.Liga
 
 class LigaAdapter(
+    private val onItemSelected: (Liga) -> Unit,
     private val onLigaClick: (Liga) -> Unit
 ) : ListAdapter<Liga, LigaAdapter.LigaViewHolder>(LigaDiffCallback()) {
 
@@ -27,11 +29,18 @@ class LigaAdapter(
             binding.tvNombreLiga.text = liga.nombre
             binding.tvPais.text = liga.paisNombre
 
-            Glide.with(binding.root.context)
-                .load(liga.logoUrl)
-                .into(binding.ivLogoLiga)
+            val icono = if (liga.esFavorita) R.drawable.favorito else R.drawable.favorito_borde
+            binding.ivLogoLiga.setImageResource(icono)
 
-            binding.root.setOnClickListener { onLigaClick(liga) }
+            binding.root.setOnClickListener { onItemSelected(liga) }
+
+            binding.ivLogoLiga.setOnClickListener {
+                // Invertimos el estado visualmente al momento para dar feedback rápido
+                liga.esFavorita = !liga.esFavorita
+                notifyItemChanged(adapterPosition)
+                // Avisamos al Activity para que guarde en BD
+                onLigaClick(liga)
+            }
         }
     }
 

@@ -33,24 +33,42 @@ class FavoritosActivity : BaseActivity() {
         setupBottomNavigation(binding.bottomNavigation, R.id.nav_favoritos)
 
         // CORRECCIÓN AQUÍ: No pasamos lista, solo el listener
-        val ligaAdapter = LigaAdapter { liga ->
-            val intent = Intent(this, LigaActivity::class.java)
-            intent.putExtra("LIGA_ID", liga.id)
-            intent.putExtra("LIGA_NOMBRE", liga.nombre)
-            startActivity(intent)
-        }
+        val ligaAdapter = LigaAdapter(
+            onItemSelected = { liga ->
+                // Clic normal: Ir al detalle
+                val intent = Intent(this, LigaActivity::class.java)
+                intent.putExtra("LIGA_ID", liga.id)
+                intent.putExtra("LIGA_NOMBRE", liga.nombre)
+                startActivity(intent)
+            },
+            onLigaClick = { liga ->
+                // Clic Corazón: Quitar de favoritos
+                viewModel.actualizarLiga(liga)
+                // No hace falta hacer nada más, la lista se actualizará sola al desaparecer el ítem
+            }
+        )
 
-        val noticiaAdapter = NoticiaAdapter { noticia ->
-            val intent = Intent(this, NoticiaExpandidaActivity::class.java)
-            intent.putExtra("NOTICIA_ID", noticia.id)
-            startActivity(intent)
-        }
+        val noticiaAdapter = NoticiaAdapter(
+            onItemSelected = { noticia ->
+                val intent = Intent(this, NoticiaExpandidaActivity::class.java)
+                intent.putExtra("NOTICIA_ID", noticia.id)
+                startActivity(intent)
+            },
+            onNoticiaClick = { noticia ->
+                viewModel.actualizarNoticia(noticia)
+            }
+        )
 
-        val partidoAdapter = PartidoAdapter { partido ->
-            val intent = Intent(this, InfoPartidoActivity::class.java)
-            intent.putExtra("PARTIDO_ID", partido.id)
-            startActivity(intent)
-        }
+        val partidoAdapter = PartidoAdapter(
+            onItemSelected = { partido ->
+                val intent = Intent(this, InfoPartidoActivity::class.java)
+                intent.putExtra("PARTIDO_ID", partido.id)
+                startActivity(intent)
+            },
+            onPartidoClick = { partido ->
+                viewModel.actualizarPartido(partido)
+            }
+        )
 
         binding.rvFavLigas.layoutManager = LinearLayoutManager(this)
         binding.rvFavLigas.adapter = ligaAdapter
@@ -60,15 +78,22 @@ class FavoritosActivity : BaseActivity() {
         binding.rvFavPartidos.adapter = partidoAdapter
 
         viewModel.ligasFavoritas.observe(this) { ligas ->
-            adapterLiga.submitList(ligas) // Usamos submitList
-        }
-
-        viewModel.noticiasFavoritas.observe(this) { noticias ->
-            adapterNoticia.submitList(noticias) // Usamos submitList
+            // Solo actualizamos si el adaptador ya existe
+            if (::adapterLiga.isInitialized) {
+                adapterLiga.submitList(ligas)
+            }
         }
 
         viewModel.partidosFavoritos.observe(this) { partidos ->
-            adapterPartido.submitList(partidos) // Usamos submitList
+            if (::adapterPartido.isInitialized) {
+                adapterPartido.submitList(partidos)
+            }
+        }
+
+        viewModel.noticiasFavoritas.observe(this) { noticias ->
+            if (::adapterNoticia.isInitialized) {
+                adapterNoticia.submitList(noticias)
+            }
         }
     }
 }

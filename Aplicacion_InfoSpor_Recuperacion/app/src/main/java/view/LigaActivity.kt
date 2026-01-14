@@ -52,12 +52,16 @@ class LigaActivity : AppCompatActivity() {
         viewModel.setLigaId(ligaId)
 
         // 4. Configurar RecyclerView de Partidos (Ahora PartidoAdapter es ListAdapter)
-        partidosAdapter = PartidoAdapter { partido ->
-            // Navegar al detalle del partido
-            val intent = Intent(this, InfoPartidoActivity::class.java)
-            intent.putExtra("PARTIDO_ID", partido.id)
-            startActivity(intent)
-        }
+        partidosAdapter = PartidoAdapter(
+            onItemSelected = { partido ->
+                val intent = Intent(this, InfoPartidoActivity::class.java)
+                intent.putExtra("PARTIDO_ID", partido.id)
+                startActivity(intent)
+            },
+            onPartidoClick = { partido ->
+                viewModel.actualizarFavoritoPartido(partido)
+            }
+        )
         binding.rvPartidosLiga.layoutManager = LinearLayoutManager(this)
         binding.rvPartidosLiga.adapter = partidosAdapter
 

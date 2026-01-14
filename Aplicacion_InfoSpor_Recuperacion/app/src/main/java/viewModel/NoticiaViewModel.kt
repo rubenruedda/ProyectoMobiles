@@ -7,15 +7,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import db.AppDataBase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import model.Noticia
+import model.Partido
 import respository.InfoSportRepository
 
 class NoticiaViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: InfoSportRepository
     private val _searchQuery = MutableLiveData<String>("")
+
     val noticias: LiveData<List<Noticia>>
     private val _noticiaId = MutableLiveData<Int>()
+    private val db = AppDataBase.getDatabase(application)
 
     val noticia: LiveData<Noticia> = _noticiaId.switchMap { id -> repository.obtenerNoticiaPorId(id)}
 
@@ -53,6 +57,12 @@ class NoticiaViewModel(application: Application) : AndroidViewModel(application)
             } else {
                 repository.agregarFavorito("NOTICIA", partidoId.toString())
             }
+        }
+    }
+
+    fun actualizarFavoritoNoticia(noticia: Noticia) {
+        viewModelScope.launch(Dispatchers.IO) {
+            db.noticiaDao().actualizarNoticia(noticia)
         }
     }
 }

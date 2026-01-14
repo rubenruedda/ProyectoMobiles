@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.aplicacion_infosport.R
 import com.example.aplicacion_infosport.databinding.ItemNoticiaBinding
 import model.Noticia
 
 class NoticiaAdapter(
+    private val onItemSelected: (Noticia) -> Unit,
     private val onNoticiaClick: (Noticia) -> Unit
 ) : ListAdapter<Noticia, NoticiaAdapter.NoticiaViewHolder>(NoticiaDiffCallback()) {
 
@@ -27,12 +29,18 @@ class NoticiaAdapter(
             binding.tvTitulo.text = noticia.titulo
             binding.tvFuenteFecha.text = "${noticia.fuente} • ${noticia.fechaPublicacion}"
 
-            Glide.with(binding.root.context)
-                .load(noticia.urlImagen)
-                .centerCrop()
-                .into(binding.ivNoticia)
+            val icono = if (noticia.esFavorita) R.drawable.favorito else R.drawable.favorito_borde
+            binding.ivNoticia.setImageResource(icono)
 
-            binding.root.setOnClickListener { onNoticiaClick(noticia) }
+            binding.root.setOnClickListener { onItemSelected(noticia) }
+
+            binding.ivNoticia.setOnClickListener {
+                // Invertimos el estado visualmente al momento para dar feedback rápido
+                noticia.esFavorita = !noticia.esFavorita
+                notifyItemChanged(adapterPosition)
+                // Avisamos al Activity para que guarde en BD
+                onNoticiaClick(noticia)
+            }
         }
     }
 

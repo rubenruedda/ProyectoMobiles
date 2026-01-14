@@ -48,7 +48,6 @@ abstract class AppDataBase : RoomDatabase() {
                     AppDataBase::class.java,
                     "info_sports_db_v2"
                 )
-                    .addCallback(roomDatabaseCallback())
                     .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
@@ -56,7 +55,7 @@ abstract class AppDataBase : RoomDatabase() {
             }
         }
 
-        private fun roomDatabaseCallback(): Callback {
+        /*private fun roomDatabaseCallback(): Callback {
             return object : Callback() {
                 // Se ejecuta SOLO cuando la base de datos se crea por primera vez
                 override fun onCreate(db: SupportSQLiteDatabase) {
@@ -85,6 +84,6 @@ abstract class AppDataBase : RoomDatabase() {
             db.partidoDao().insertarAlineaciones(PreCargaDatos.ALINEACIONES)
 
             db.noticiaDao().insertarNoticias(PreCargaDatos.NOTICIAS)
-        }
+        }*/
     }
 }

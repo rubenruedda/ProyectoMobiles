@@ -2,6 +2,7 @@ package view
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,20 +31,29 @@ class NoticiasActivity : BaseActivity() {
 
         // 3. Configurar RecyclerView y Adapter
         // CAMBIO PRINCIPAL: Quitamos emptyList() del constructor
-        adapter = NoticiaAdapter { noticia ->
-            val intent = Intent(this, NoticiaExpandidaActivity::class.java)
-            intent.putExtra("NOTICIA_ID", noticia.id)
-            startActivity(intent)
-        }
+        val noticiaAdapter = NoticiaAdapter (
+            onItemSelected = { noticia ->
+                // Clic normal: Ir a detalle
+                val intent = Intent(this, NoticiaExpandidaActivity::class.java)
+                intent.putExtra("NOTICIA_ID", noticia.id)
+                startActivity(intent)
+            },
+            onNoticiaClick = { noticia ->
+                // Clic Favorito: Guardar en BD
+                viewModel.actualizarFavoritoNoticia(noticia)
+                Toast.makeText(this, "Favorito actualizado", Toast.LENGTH_SHORT).show()
+            }
+        )
 
         binding.rvNoticias.layoutManager = LinearLayoutManager(this)
-        binding.rvNoticias.adapter = adapter
+        binding.rvNoticias.adapter = noticiaAdapter
 
         // 4. Observar datos del ViewModel
         // Asegúrate de que tu ViewModel exponga 'noticias' o 'todasLasNoticias' (ajusta el nombre si es necesario)
         viewModel.noticias.observe(this) { listaNoticias ->
-            // CAMBIO PRINCIPAL: Usamos submitList en lugar de actualizarDatos
-            adapter.submitList(listaNoticias)
+            if (::adapter.isInitialized) {
+                adapter.submitList(listaNoticias)
+            }
         }
 
         // 5. Configurar Buscador
