@@ -28,61 +28,13 @@
         app:queryHint="Buscar..."
         app:layout_constraintTop_toBottomOf="@id/appBar"/>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavoritos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@id/searchView"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Competiciones Favoritas"
-                android:textColor="@color/primary_green"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFavLigas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_marginBottom="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Partidos Guardados"
-                android:textColor="@color/primary_green"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFavPartidos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_marginBottom="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Noticias Guardadas"
-                android:textColor="@color/primary_green"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFavNoticias"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"

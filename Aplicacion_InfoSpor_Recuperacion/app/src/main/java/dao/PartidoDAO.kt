@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import model.Alineacion
 import model.Evento
-import model.Liga
 import model.Partido
 
 @Dao
@@ -17,9 +16,6 @@ interface PartidoDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertarAlineaciones(alineaciones: List<Alineacion>)
-
-    @Update
-    suspend fun actualizarPartido(partido: Partido)
 
     // Consultas Básicas
     @Query("SELECT * FROM partido WHERE fecha = :fechaHoy ORDER BY hora ASC")
@@ -44,7 +40,4 @@ interface PartidoDAO {
 
     @Query("SELECT * FROM alineacion WHERE partido_id = :partidoId AND equipo_id = :equipoId ORDER BY es_titular DESC, dorsal ASC")
     fun obtenerAlineacionPorEquipo(partidoId: Int, equipoId: Int): LiveData<List<Alineacion>>
-
-    @Query("SELECT * FROM partido WHERE es_favorito = 1")
-    fun obtenerPartidosFavoritos(): LiveData<List<Partido>>
 }

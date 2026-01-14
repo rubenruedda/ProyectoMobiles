@@ -4,50 +4,36 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
 import db.AppDataBase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import model.Equipo
 import model.Liga
-import model.Noticia
-import model.Partido
 import respository.InfoSportRepository
 
 class FavoritoViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: InfoSportRepository
-    private val db = AppDataBase.getDatabase(application)
 
+    val Context.repository: InfoSportRepository
+        get() {
+            val db = AppDataBase.getDatabase(this)
+            return InfoSportRepository(
+                partidoDao = db.partidoDao(),
+                ligaDao = db.ligaDao(),
+                noticiaDao = db.noticiaDao()
+            )
+        }
+
+    private val repository: InfoSportRepository
+
+    val ligasFavoritas: LiveData<List<Liga>>
+    val equiposFavoritos: LiveData<List<Equipo>>
 
     init {
-        val db = AppDataBase.getDatabase(application)
-        repository = InfoSportRepository(
-            db.partidoDao(),
-            db.ligaDao(),
-            db.noticiaDao(),
-            db.favoritoDao()
-        )
-    }
+        // Inicialización del Repositorio
+        val context = application.applicationContext
+        val db = AppDataBase.getDatabase(context)
+        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao())
 
-    val ligasFavoritas: LiveData<List<Liga>> = db.ligaDao().obtenerLigasFavoritas()
-    val partidosFavoritos: LiveData<List<Partido>> = db.partidoDao().obtenerPartidosFavoritos() // Crea este método en su DAO
-    val noticiasFavoritas: LiveData<List<Noticia>> = db.noticiaDao().obtenerNoticiasFavoritas() // Crea este método en su DAO
-
-    fun actualizarLiga(liga: Liga) {
-        viewModelScope.launch(Dispatchers.IO) {
-            db.ligaDao().actualizarLiga(liga)
-        }
-    }
-
-    fun actualizarPartido(partido: Partido) {
-        viewModelScope.launch(Dispatchers.IO) {
-            db.partidoDao().actualizarPartido(partido)
-        }
-    }
-
-    fun actualizarNoticia(noticia: Noticia) {
-        viewModelScope.launch(Dispatchers.IO) {
-            db.noticiaDao().actualizarNoticia(noticia)
-        }
+        // Obtiene los LiveData de las listas de favoritos
+        ligasFavoritas = repository.obtenerLigasFavoritas()
+        equiposFavoritos = repository.obtenerEquiposFavoritos()
     }
 }

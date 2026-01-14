@@ -41,7 +41,7 @@ class LigaActivity : AppCompatActivity() {
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_toggle_favorito -> {
-                    viewModel.toggleFavorito(ligaId.toInt(), menuItem.isChecked)
+                    viewModel.toggleFavorito()
                     true
                 }
                 else -> false
@@ -52,16 +52,12 @@ class LigaActivity : AppCompatActivity() {
         viewModel.setLigaId(ligaId)
 
         // 4. Configurar RecyclerView de Partidos (Ahora PartidoAdapter es ListAdapter)
-        partidosAdapter = PartidoAdapter(
-            onItemSelected = { partido ->
-                val intent = Intent(this, InfoPartidoActivity::class.java)
-                intent.putExtra("PARTIDO_ID", partido.id)
-                startActivity(intent)
-            },
-            onPartidoClick = { partido ->
-                viewModel.actualizarFavoritoPartido(partido)
-            }
-        )
+        partidosAdapter = PartidoAdapter { partido ->
+            // Navegar al detalle del partido
+            val intent = Intent(this, InfoPartidoActivity::class.java)
+            intent.putExtra("PARTIDO_ID", partido.id)
+            startActivity(intent)
+        }
         binding.rvPartidosLiga.layoutManager = LinearLayoutManager(this)
         binding.rvPartidosLiga.adapter = partidosAdapter
 

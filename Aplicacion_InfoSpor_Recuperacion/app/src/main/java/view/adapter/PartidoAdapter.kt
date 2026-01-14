@@ -10,7 +10,6 @@ import com.example.aplicacion_infosport.databinding.ItemPartidoBinding
 import model.Partido
 
 class PartidoAdapter(
-    private val onItemSelected: (Partido) -> Unit,
     private val onPartidoClick: (Partido) -> Unit
 ) : ListAdapter<Partido, PartidoAdapter.PartidoViewHolder>(PartidoDiffCallback()) {
 
@@ -40,7 +39,7 @@ class PartidoAdapter(
             Glide.with(binding.root.context).load(partido.escudoLocal).into(binding.imgLocal)
             Glide.with(binding.root.context).load(partido.escudoVisitante).into(binding.imgVisitante)
 
-            binding.root.setOnClickListener { onItemSelected(partido) }
+            binding.root.setOnClickListener { onPartidoClick(partido) }
         }
     }
 

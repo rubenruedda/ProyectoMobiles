@@ -26,9 +26,6 @@ interface LigaDAO {
     @Query("SELECT * FROM liga ORDER BY pais_nombre, nombre ASC")
     fun obtenerTodasLasLigas(): LiveData<List<Liga>>
 
-    @Query("SELECT * FROM liga")
-    suspend fun obtenerLigasList(): List<Liga>
-
     // Búsqueda de Ligas
     @Query("SELECT * FROM liga WHERE nombre LIKE '%' || :query || '%' OR pais_nombre LIKE '%' || :query || '%' ORDER BY pais_nombre, nombre ASC")
     fun buscarLigas(query: String): LiveData<List<Liga>>

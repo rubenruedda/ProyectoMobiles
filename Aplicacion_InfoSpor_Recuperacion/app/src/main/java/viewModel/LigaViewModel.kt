@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import db.AppDataBase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import model.Clasificacion
 import model.Liga
@@ -18,8 +17,8 @@ class LigaViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: InfoSportRepository
     private val _ligaId = MutableLiveData<String>()
-    private val db = AppDataBase.getDatabase(application)
 
+    // LiveData de la liga actual (para saber si es favorita)
     val liga: LiveData<Liga> = _ligaId.switchMap { id -> repository.obtenerLigaPorId(id) }
 
     val clasificacion: LiveData<List<Clasificacion>> = _ligaId.switchMap { id ->
@@ -32,35 +31,19 @@ class LigaViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         val db = AppDataBase.getDatabase(application)
-        repository = InfoSportRepository(
-            db.partidoDao(),
-            db.ligaDao(),
-            db.noticiaDao(),
-            db.favoritoDao()
-        )
+        repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao())
     }
 
     fun setLigaId(id: String) {
         _ligaId.value = id
     }
 
-    fun esFavorito(partidoId: Int): LiveData<Boolean> {
-        return repository.esFavorito("PARTIDO", partidoId.toString())
-    }
-
-    fun toggleFavorito(partidoId: Int, esActualmenteFavorito: Boolean) {
-        viewModelScope.launch {
-            if (esActualmenteFavorito) {
-                repository.eliminarFavorito("LIGA", partidoId.toString())
-            } else {
-                repository.agregarFavorito("LIGA", partidoId.toString())
+    fun toggleFavorito() {
+        liga.value?.let { ligaActual ->
+            viewModelScope.launch {
+                ligaActual.esFavorita = !ligaActual.esFavorita
+                repository.actualizarLiga(ligaActual)
             }
-        }
-    }
-
-    fun actualizarFavoritoPartido(partido: Partido){
-        viewModelScope.launch(Dispatchers.IO) {
-            db.partidoDao().actualizarPartido(partido)
         }
     }
 }

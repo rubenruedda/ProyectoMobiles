@@ -9,18 +9,14 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aplicacion_infosport.R
 import com.example.aplicacion_infosport.databinding.ActivityMainBinding
-import utils.PreCargaDatos
 import view.adapter.LigaAdapter
-import view.adapter.NoticiaAdapter
 import view.adapter.PartidoAdapter
-import viewModel.*
+import viewModel.InicioViewModel
 
 class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val IviewModel: InicioViewModel by viewModels()
-    private val PviewModel: InfoPartidoViewModel by viewModels()
-
+    private val viewModel: InicioViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,41 +30,26 @@ class MainActivity : BaseActivity() {
             tituloPersonalizado.text = getString(R.string.menu_inicio)
         }
         setupBottomNavigation(binding.bottomNavigation, R.id.nav_inicio)
-        val precarga = PreCargaDatos(this)
-        precarga.cargarDatos()
-        val ligaAdapter = LigaAdapter (
-            onItemSelected = { liga ->
-                // Clic normal: Ir a detalle
-                val intent = Intent(this, LigaActivity::class.java)
-                intent.putExtra("LIGA_ID", liga.id)
-                intent.putExtra("LIGA_NOMBRE", liga.nombre)
-                startActivity(intent)
-            },
-            onLigaClick = { liga ->
-                // Clic Favorito: Guardar en BD
-                IviewModel.actualizarFavoritoLiga(liga)
-                Toast.makeText(this, "Favorito actualizado", Toast.LENGTH_SHORT).show()
-            }
-        )
-        binding.rvLigas.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val ligaAdapter = LigaAdapter { liga ->
+            val intent = Intent(this, LigaActivity::class.java)
+            intent.putExtra("LIGA_ID", liga.id)
+            intent.putExtra("LIGA_NOMBRE", liga.nombre)
+            startActivity(intent)
+        }
+        binding.rvLigas.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvLigas.adapter = ligaAdapter
-        val partidoAdapter = PartidoAdapter(
-            onItemSelected = { partido ->
-                val intent = Intent(this, InfoPartidoActivity::class.java)
-                intent.putExtra("PARTIDO_ID", partido.id)
-                startActivity(intent)
-            },
-            onPartidoClick = { partido ->
-                IviewModel.actualizarFavoritoPartido(partido)
-            }
-        )
+        val partidoAdapter = PartidoAdapter { partido ->
+            val intent = Intent(this, InfoPartidoActivity::class.java)
+            intent.putExtra("PARTIDO_ID", partido.id)
+            startActivity(intent)
+        }
         binding.rvPartidos.layoutManager = LinearLayoutManager(this)
         binding.rvPartidos.adapter = partidoAdapter
-
-        IviewModel.ligasPrincipales.observe(this) { ligas ->
+        viewModel.ligasPrincipales.observe(this) { ligas ->
             ligaAdapter.submitList(ligas)
         }
-        IviewModel.partidosFiltrados.observe(this) { partidos ->
+        viewModel.partidosFiltrados.observe(this) { partidos ->
             partidoAdapter.submitList(partidos)
 
             if (partidos.isEmpty()) {
@@ -82,7 +63,7 @@ class MainActivity : BaseActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                IviewModel.setSearchQuery(newText.orEmpty())
+                viewModel.setSearchQuery(newText.orEmpty())
                 return true
             }
         })

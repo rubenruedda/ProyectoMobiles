@@ -30,7 +30,7 @@ open class BaseActivity : AppCompatActivity() {
 
     private fun navegar(destino: Class<*>) {
         startActivity(Intent(this, destino))
-        overridePendingTransition(0, 0)
-        finish()
+        overridePendingTransition(0, 0) // Elimina animación para efecto "pestaña"
+        finish() // Cierra la activity actual
     }
 }
