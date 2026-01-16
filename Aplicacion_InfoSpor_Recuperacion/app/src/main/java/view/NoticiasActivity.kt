@@ -16,6 +16,7 @@ class NoticiasActivity : BaseActivity() {
 
     private lateinit var binding: ActivityNoticiasBinding
     private val viewModel: NoticiaViewModel by viewModels()
+    private lateinit var adapter: NoticiaAdapter
     private val TAG = "NoticiasActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,12 +31,23 @@ class NoticiasActivity : BaseActivity() {
 
         setupBottomNavigation(binding.bottomNavigation, R.id.nav_noticias)
 
-        val adapter = NoticiaAdapter(emptyList()) { noticia ->
-            Log.d(TAG, "Noticia seleccionada: ${noticia.titulo}")
-            val intent = Intent(this, NoticiaExpandidaActivity::class.java)
-            intent.putExtra("NOTICIA_ID", noticia.id)
-            startActivity(intent)
-        }
+        adapter = NoticiaAdapter(
+            listaNoticias = emptyList(),
+            onNoticiaClick = { noticia ->
+                Log.d(TAG, "Noticia seleccionada: ${noticia.titulo}")
+                val intent = Intent(this, NoticiaExpandidaActivity::class.java)
+                intent.putExtra("NOTICIA_ID", noticia.id)
+                startActivity(intent)
+            },
+            onFavoritoClick = { noticia ->
+                viewModel.toggleNoticiaFavorita(noticia)
+                val mensaje = if (noticia.esFavorita) 
+                    getString(R.string.eliminado_favoritos) 
+                else 
+                    getString(R.string.agregado_favoritos)
+                Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+            }
+        )
         binding.rvNoticias.layoutManager = LinearLayoutManager(this)
         binding.rvNoticias.adapter = adapter
 
@@ -44,8 +56,6 @@ class NoticiasActivity : BaseActivity() {
             if (noticias.isEmpty()) {
                 Log.w(TAG, "No se encontraron noticias")
                 Toast.makeText(this, getString(R.string.sin_datos), Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "${noticias.size} noticias disponibles", Toast.LENGTH_SHORT).show()
             }
             adapter.actualizarDatos(noticias)
         }

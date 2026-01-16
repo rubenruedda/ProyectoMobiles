@@ -14,7 +14,6 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:navigationIcon="@drawable/arrow_back"
-        app:menu="@menu/favorito_menu"
         app:title="Noticia"
         app:titleTextColor="@color/primary_green"
         app:layout_constraintTop_toTopOf="parent"

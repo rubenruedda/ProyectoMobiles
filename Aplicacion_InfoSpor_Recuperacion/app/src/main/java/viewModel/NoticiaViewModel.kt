@@ -45,4 +45,11 @@ class NoticiaViewModel(application: Application) : AndroidViewModel(application)
             }
         }
     }
+    
+    fun toggleNoticiaFavorita(noticia: Noticia) {
+        viewModelScope.launch {
+            noticia.esFavorita = !noticia.esFavorita
+            repository.actualizarNoticia(noticia)
+        }
+    }
 }

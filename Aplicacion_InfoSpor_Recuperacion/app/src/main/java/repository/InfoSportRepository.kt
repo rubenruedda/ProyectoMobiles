@@ -36,7 +36,11 @@ class InfoSportRepository (
     fun obtenerTodasLasNoticias(): LiveData<List<Noticia>> = noticiaDao.obtenerTodasLasNoticias()
     fun buscarNoticias(query: String): LiveData<List<Noticia>> = noticiaDao.buscarNoticias(query)
     fun obtenerNoticiaPorId(noticiaId: Int): LiveData<Noticia> = noticiaDao.obtenerNoticiaPorId(noticiaId)
+    fun obtenerNoticiasFavoritas(): LiveData<List<Noticia>> = noticiaDao.obtenerNoticiasFavoritas()
     suspend fun actualizarNoticia(noticia: Noticia) = noticiaDao.actualizarNoticia(noticia)
+
+    // --- Partidos Favoritos ---
+    fun obtenerPartidosFavoritos(): LiveData<List<Partido>> = partidoDao.obtenerPartidosFavoritos()
 
     // --- Escritura ---
     suspend fun actualizarLiga(liga: Liga) = ligaDao.actualizarLiga(liga)

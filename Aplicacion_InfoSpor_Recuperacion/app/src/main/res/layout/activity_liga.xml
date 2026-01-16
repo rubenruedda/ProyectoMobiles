@@ -17,15 +17,14 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/primary_green"
+            android:background="@color/app_background"
             app:navigationIcon="@drawable/arrow_back"
-            app:navigationIconTint="@color/white"
+            app:navigationIconTint="@color/primary_green"
             tools:title="Nombre Liga"
-            app:titleTextColor="@color/white"
+            app:titleTextColor="@color/primary_green"
             app:menu="@menu/favorito_menu"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Botones de pestañas -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

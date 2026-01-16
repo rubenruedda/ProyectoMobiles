@@ -37,6 +37,8 @@
     <string name="goles_favor">GF</string>
     <string name="goles_contra">GA</string>
     <string name="error_cargar_datos">Error loading data</string>
+    <string name="agregado_favoritos">Added to favorites</string>
+    <string name="eliminado_favoritos">Removed from favorites</string>
     <string name="leer_mas">Read more</string>
     <string name="autor">Author:</string>
     <string name="fecha">Date:</string>
@@ -44,6 +46,12 @@
     <string name="seleccionar_liga">Select a league</string>
     <string name="no_favoritos">You have no saved favorites</string>
     <string name="agregar_favoritos">Add leagues, matches or news to favorites</string>
+    <string name="ligas_favoritas">Favorite Leagues</string>
+    <string name="partidos_favoritos">Favorite Matches</string>
+    <string name="noticias_favoritas">Favorite News</string>
+    <string name="no_ligas_favoritas">You have no favorite leagues</string>
+    <string name="no_partidos_favoritos">You have no favorite matches</string>
+    <string name="no_noticias_favoritas">You have no favorite news</string>
     <string name="acerca_de_titulo">About InfoSport</string>
     <string name="acerca_de_version">Version 1.0</string>
     <string name="acerca_de_desarrollador">Developed by: Android Student</string>

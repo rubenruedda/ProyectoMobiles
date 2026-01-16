@@ -2,29 +2,23 @@ package view
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacion_infosport.R
 import com.example.aplicacion_infosport.databinding.ActivityAcercaDeBinding
 
-class AcercaDeActivity : AppCompatActivity() {
+class AcercaDeActivity : BaseActivity() {
     
+    private lateinit var binding: ActivityAcercaDeBinding
     private val TAG = "AcercaDeActivity"
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate: Iniciando AcercaDeActivity")
         
-        val binding = ActivityAcercaDeBinding.inflate(layoutInflater)
+        binding = ActivityAcercaDeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.toolbar.setNavigationOnClickListener { 
-            Log.d(TAG, "Navegación atrás presionada")
-            finish() 
-        }
         
-        // Mostrar mensaje de bienvenida
-        Toast.makeText(this, getString(R.string.acerca_de_titulo), Toast.LENGTH_SHORT).show()
+        // Configurar bottom navigation (sin selección activa ya que es una pantalla especial)
+        setupBottomNavigation(binding.bottomNavigation, -1)
         
         Log.d(TAG, "onCreate: AcercaDeActivity inicializada correctamente")
     }
