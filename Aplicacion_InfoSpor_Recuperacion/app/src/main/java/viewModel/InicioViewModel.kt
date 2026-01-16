@@ -48,9 +48,7 @@ class InicioViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private fun getFechaActual(): String {
-        // Para pruebas usar la fecha de los datos simulados
-        // En producción usar: SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-        return "20/11/2025" // Fecha de los datos de prueba
-        // return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+        // Usar la fecha actual del sistema en formato dd/MM/yyyy
+        return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
     }
 }

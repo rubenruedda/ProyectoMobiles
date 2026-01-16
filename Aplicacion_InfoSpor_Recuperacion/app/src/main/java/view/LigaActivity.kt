@@ -128,9 +128,12 @@ class LigaActivity : AppCompatActivity() {
             val iconRes = if (liga.esFavorita) R.drawable.favorito else R.drawable.favorito_borde
             binding.toolbar.menu.findItem(R.id.menu_toggle_favorito)?.setIcon(iconRes)
             
-            val mensaje = if (liga.esFavorita) getString(R.string.favorito_agregado) else getString(R.string.favorito_eliminado)
-            Log.d(TAG, "Estado favorito actualizado: ${liga.esFavorita}")
-            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+            // Solo mostrar toast si no es la carga inicial
+            if (!viewModel.isInitialLoad()) {
+                val mensaje = if (liga.esFavorita) getString(R.string.favorito_agregado) else getString(R.string.favorito_eliminado)
+                Log.d(TAG, "Estado favorito actualizado: ${liga.esFavorita}")
+                Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+            }
         }
         
         Log.d(TAG, "onCreate: LigaActivity inicializada correctamente")

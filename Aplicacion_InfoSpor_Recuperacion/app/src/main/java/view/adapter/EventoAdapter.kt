@@ -38,14 +38,15 @@ class EventoAdapter : RecyclerView.Adapter<EventoAdapter.EventoViewHolder>() {
             binding.tvMinuto.text = "${evento.minuto}'"
             
             // Construir texto del jugador con tipo de evento
-            val textoEvento = "${evento.jugador ?: "Desconocido"} (${evento.tipo})"
+            val textoEvento = "${evento.nombreJugador} (${evento.tipo})"
             binding.tvNombreJugador.text = textoEvento
             
             // Seleccionar icono según tipo de evento
             val iconRes = when (evento.tipo.lowercase()) {
-                "gol" -> R.drawable.ic_launcher_foreground // Idealmente tendrías un icono de gol
+                "gol" -> R.drawable.ic_gol
                 "tarjeta amarilla" -> R.drawable.yellow_card
-                "tarjeta roja" -> R.drawable.yellow_card // Idealmente tendrías un icono de tarjeta roja
+                "tarjeta roja" -> R.drawable.ic_red_card
+                "sustitucion", "sustitución" -> R.drawable.ic_sustitucion
                 else -> R.drawable.ic_launcher_foreground
             }
             binding.ivIconoEvento.setImageResource(iconRes)

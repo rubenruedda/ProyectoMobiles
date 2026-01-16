@@ -17,6 +17,7 @@ class InfoSportRepository (
 
     fun obtenerResultadosPorLiga(ligaId: String): LiveData<List<Partido>> = partidoDao.obtenerResultadosPorLiga(ligaId)
     fun obtenerPartidosProximosPorLiga(ligaId: String): LiveData<List<Partido>> = partidoDao.obtenerPartidosProximosPorLiga(ligaId)
+    fun obtenerTodosPartidosPorLiga(ligaId: String): LiveData<List<Partido>> = partidoDao.obtenerTodosPartidosPorLiga(ligaId)
 
     fun obtenerPartidoPorId(partidoId: Int): LiveData<Partido> = partidoDao.obtenerPartidoPorId(partidoId)
     fun obtenerEventosPorPartido(partidoId: Int): LiveData<List<Evento>> = partidoDao.obtenerEventosPorPartido(partidoId)

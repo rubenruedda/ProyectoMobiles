@@ -31,6 +31,10 @@ interface PartidoDAO {
 
     @Query("SELECT * FROM partido WHERE liga_id = :ligaId AND marcador_local IS NULL ORDER BY fecha ASC")
     fun obtenerPartidosProximosPorLiga(ligaId: String): LiveData<List<Partido>>
+    
+    // Obtener TODOS los partidos de una liga (para mostrar en la vista de liga)
+    @Query("SELECT * FROM partido WHERE liga_id = :ligaId ORDER BY fecha DESC, hora ASC")
+    fun obtenerTodosPartidosPorLiga(ligaId: String): LiveData<List<Partido>>
 
     @Query("SELECT * FROM partido WHERE id = :partidoId LIMIT 1")
     fun obtenerPartidoPorId(partidoId: Int): LiveData<Partido>
