@@ -13,4 +13,40 @@
     <string name="favorito_agregado">Añadido a favoritos</string>
     <string name="favorito_eliminado">Eliminado de favoritos</string>
     <string name="acerca_de_desc">InfoSport v1.0\nDesarrollado para la clase de Android.\nUna app para amantes del fútbol.</string>
+    
+    <!-- Textos adicionales -->
+    <string name="buscar">Buscar partidos...</string>
+    <string name="resultados">Resultados</string>
+    <string name="clasificacion">Clasificación</string>
+    <string name="finalizado">Finalizado</string>
+    <string name="vs">VS</string>
+    <string name="detalles_partido">Detalles del Partido</string>
+    <string name="eventos">Eventos</string>
+    <string name="alineaciones">Alineaciones</string>
+    <string name="estadisticas">Estadísticas</string>
+    <string name="sin_eventos">No hay eventos registrados</string>
+    <string name="sin_alineaciones">No hay alineaciones disponibles</string>
+    <string name="posicion">Pos</string>
+    <string name="equipo">Equipo</string>
+    <string name="puntos">Pts</string>
+    <string name="partidos_jugados">PJ</string>
+    <string name="ganados">G</string>
+    <string name="empatados">E</string>
+    <string name="perdidos">P</string>
+    <string name="goles_favor">GF</string>
+    <string name="goles_contra">GC</string>
+    <string name="error_cargar_datos">Error al cargar datos</string>
+    <string name="leer_mas">Leer más</string>
+    <string name="autor">Autor:</string>
+    <string name="fecha">Fecha:</string>
+    <string name="ligas_principales">Ligas Principales</string>
+    <string name="seleccionar_liga">Selecciona una liga</string>
+    <string name="no_favoritos">No tienes favoritos guardados</string>
+    <string name="agregar_favoritos">Agrega ligas, partidos o noticias a favoritos</string>
+    <string name="acerca_de_titulo">Acerca de InfoSport</string>
+    <string name="acerca_de_version">Versión 1.0</string>
+    <string name="acerca_de_desarrollador">Desarrollado por: Estudiante Android</string>
+    <string name="acerca_de_descripcion">InfoSport es una aplicación desarrollada como proyecto académico para la asignatura de Desarrollo de Aplicaciones Móviles.\n\nPermite consultar información sobre ligas de fútbol, partidos, clasificaciones y noticias deportivas.\n\nCaracterísticas principales:\n• Consulta de partidos en tiempo real\n• Clasificaciones actualizadas\n• Noticias deportivas\n• Sistema de favoritos\n• Soporte multiidioma</string>
+    <string name="acerca_de_contacto">Contacto: infosport@ejemplo.com</string>
+    <string name="acerca_de_agradecimientos">Agradecimientos especiales al profesor y compañeros de clase por su apoyo.</string>
 </resources>

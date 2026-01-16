@@ -79,4 +79,26 @@ object PreCargaDatos {
         Alineacion(1, 8, 102, "Pedri", true, 8),
         Alineacion(1, 9, 102, "Lewandowski", true, 9)
     )
+
+    // --- 6. CLASIFICACIÓN ---
+    val CLASIFICACION = listOf(
+        // LaLiga EA Sports (Liga 1)
+        Clasificacion("1", 101, "Real Madrid", "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png", 1, 45, 17, 14, 3, 0),
+        Clasificacion("1", 102, "FC Barcelona", "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png", 2, 42, 17, 13, 3, 1),
+        Clasificacion("1", 103, "Atlético de Madrid", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Atletico_Madrid_2017_logo.svg/1200px-Atletico_Madrid_2017_logo.svg.png", 3, 38, 17, 11, 5, 1),
+        Clasificacion("1", 104, "Sevilla FC", "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Sevilla_FC_logo.svg/1200px-Sevilla_FC_logo.svg.png", 4, 30, 17, 9, 3, 5),
+        
+        // Premier League (Liga 2)
+        Clasificacion("2", 201, "Manchester City", "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png", 1, 47, 18, 15, 2, 1),
+        Clasificacion("2", 202, "Liverpool", "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png", 2, 44, 18, 14, 2, 2),
+        Clasificacion("2", 203, "Arsenal", "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/1200px-Arsenal_FC.svg.png", 3, 40, 18, 12, 4, 2),
+        
+        // Serie A (Liga 3)
+        Clasificacion("3", 301, "Juventus", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Juventus_FC_2017_icon_%28black%29.svg/1200px-Juventus_FC_2017_icon_%28black%29.svg.png", 1, 43, 18, 13, 4, 1),
+        Clasificacion("3", 302, "AC Milan", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_AC_Milan.svg/1200px-Logo_of_AC_Milan.svg.png", 2, 39, 18, 12, 3, 3),
+        
+        // Bundesliga (Liga 4)
+        Clasificacion("4", 401, "Bayern Munich", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/FC_Bayern_München_logo_%282017%29.svg/1200px-FC_Bayern_München_logo_%282017%29.svg.png", 1, 48, 17, 16, 0, 1),
+        Clasificacion("4", 402, "Borussia Dortmund", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/1200px-Borussia_Dortmund_logo.svg.png", 2, 38, 17, 11, 5, 1)
+    )
 }

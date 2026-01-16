@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import model.Noticia
 
 @Dao
@@ -21,4 +22,7 @@ interface NoticiaDAO {
 
     @Query("SELECT * FROM noticia WHERE id = :noticiaId LIMIT 1")
     fun obtenerNoticiaPorId(noticiaId: Int): LiveData<Noticia>
+
+    @Update
+    suspend fun actualizarNoticia(noticia: Noticia)
 }

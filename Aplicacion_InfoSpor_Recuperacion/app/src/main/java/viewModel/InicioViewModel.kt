@@ -1,6 +1,7 @@
 package viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,6 +15,8 @@ import java.util.Date
 import java.util.Locale
 
 class InicioViewModel(application: Application) : AndroidViewModel(application) {
+    
+    private val TAG = "InicioViewModel"
     private val repository: InfoSportRepository
     private val _searchQuery = MutableLiveData<String>("")
     private val fechaHoy = getFechaActual()
@@ -22,12 +25,15 @@ class InicioViewModel(application: Application) : AndroidViewModel(application) 
     val ligasPrincipales: LiveData<List<Liga>>
 
     init {
+        Log.d(TAG, "Inicializando InicioViewModel")
         val db = AppDataBase.getDatabase(application)
         repository = InfoSportRepository(db.partidoDao(), db.ligaDao(), db.noticiaDao())
 
         ligasPrincipales = repository.obtenerTodasLasLigas()
+        Log.d(TAG, "Fecha de hoy para consulta: $fechaHoy")
 
         partidosFiltrados = _searchQuery.switchMap { query ->
+            Log.d(TAG, "Buscando partidos con query: $query")
             if (query.isNullOrBlank()) {
                 repository.obtenerPartidosDeHoy(fechaHoy)
             } else {
@@ -37,12 +43,14 @@ class InicioViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun setSearchQuery(query: String) {
+        Log.d(TAG, "Query de búsqueda actualizada: $query")
         _searchQuery.value = query
     }
 
     private fun getFechaActual(): String {
-        // Usa la fecha de tu sistema o una fecha fija para pruebas si no tienes datos de hoy
-        return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-        // return "20/11/2025" // Descomenta esto si quieres forzar la fecha de los datos de prueba
+        // Para pruebas usar la fecha de los datos simulados
+        // En producción usar: SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+        return "20/11/2025" // Fecha de los datos de prueba
+        // return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
     }
 }

@@ -2,6 +2,8 @@ package view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,9 +16,12 @@ class NoticiasActivity : BaseActivity() {
 
     private lateinit var binding: ActivityNoticiasBinding
     private val viewModel: NoticiaViewModel by viewModels()
+    private val TAG = "NoticiasActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate: Iniciando NoticiasActivity")
+        
         binding = ActivityNoticiasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -26,6 +31,7 @@ class NoticiasActivity : BaseActivity() {
         setupBottomNavigation(binding.bottomNavigation, R.id.nav_noticias)
 
         val adapter = NoticiaAdapter(emptyList()) { noticia ->
+            Log.d(TAG, "Noticia seleccionada: ${noticia.titulo}")
             val intent = Intent(this, NoticiaExpandidaActivity::class.java)
             intent.putExtra("NOTICIA_ID", noticia.id)
             startActivity(intent)
@@ -33,14 +39,31 @@ class NoticiasActivity : BaseActivity() {
         binding.rvNoticias.layoutManager = LinearLayoutManager(this)
         binding.rvNoticias.adapter = adapter
 
-        viewModel.noticias.observe(this) { adapter.actualizarDatos(it) }
+        viewModel.noticias.observe(this) { noticias ->
+            Log.d(TAG, "Noticias cargadas: ${noticias.size}")
+            if (noticias.isEmpty()) {
+                Log.w(TAG, "No se encontraron noticias")
+                Toast.makeText(this, getString(R.string.sin_datos), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "${noticias.size} noticias disponibles", Toast.LENGTH_SHORT).show()
+            }
+            adapter.actualizarDatos(noticias)
+        }
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?) = false
             override fun onQueryTextChange(newText: String?): Boolean {
+                Log.d(TAG, "Búsqueda: $newText")
                 viewModel.setSearchQuery(newText.orEmpty())
                 return true
             }
         })
+        
+        Log.d(TAG, "onCreate: NoticiasActivity inicializada")
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume: NoticiasActivity visible")
     }
 }

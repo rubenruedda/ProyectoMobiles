@@ -5,52 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/app_background">
+    android:background="@drawable/bg_app_gradient">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/app_background"
+            android:background="@color/primary_green"
             app:navigationIcon="@drawable/arrow_back"
-            app:title="Nombre Liga"
-            app:titleTextColor="@color/primary_green"
+            app:navigationIconTint="@color/white"
+            tools:title="Nombre Liga"
+            app:titleTextColor="@color/white"
             app:menu="@menu/favorito_menu"/>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- Botones de pestañas -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
+        android:padding="12dp"
         android:background="@color/app_background">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnClasificacion"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:text="Clasificación"
-            android:textColor="@color/primary_green"
-            app:strokeColor="@color/primary_green"
-            android:layout_marginEnd="4dp"/>
+            android:text="@string/clasificacion"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary_green"
+            android:layout_marginEnd="6dp"
+            app:cornerRadius="24dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnResultados"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:text="Resultados"
+            android:text="@string/resultados"
             android:textColor="@color/primary_green"
             app:strokeColor="@color/primary_green"
-            android:layout_marginStart="4dp"/>
+            app:strokeWidth="2dp"
+            android:layout_marginStart="6dp"
+            app:cornerRadius="24dp"/>
     </LinearLayout>
 
     <FrameLayout
@@ -63,6 +68,7 @@
             android:layout_height="match_parent"
             android:visibility="visible"
             android:padding="8dp"
+            android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_clasificacion"/>
 
@@ -72,6 +78,7 @@
             android:layout_height="match_parent"
             android:visibility="gone"
             android:padding="8dp"
+            android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_partido"/>
     </FrameLayout>

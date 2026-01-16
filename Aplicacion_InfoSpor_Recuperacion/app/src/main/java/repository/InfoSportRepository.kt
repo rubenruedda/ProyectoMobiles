@@ -21,6 +21,7 @@ class InfoSportRepository (
     fun obtenerPartidoPorId(partidoId: Int): LiveData<Partido> = partidoDao.obtenerPartidoPorId(partidoId)
     fun obtenerEventosPorPartido(partidoId: Int): LiveData<List<Evento>> = partidoDao.obtenerEventosPorPartido(partidoId)
     fun obtenerAlineacionPorEquipo(partidoId: Int, equipoId: Int): LiveData<List<Alineacion>> = partidoDao.obtenerAlineacionPorEquipo(partidoId, equipoId)
+    suspend fun actualizarPartido(partido: Partido) = partidoDao.actualizarPartido(partido)
 
     // --- Ligas ---
     fun obtenerTodasLasLigas(): LiveData<List<Liga>> = ligaDao.obtenerTodasLasLigas()
@@ -34,6 +35,7 @@ class InfoSportRepository (
     fun obtenerTodasLasNoticias(): LiveData<List<Noticia>> = noticiaDao.obtenerTodasLasNoticias()
     fun buscarNoticias(query: String): LiveData<List<Noticia>> = noticiaDao.buscarNoticias(query)
     fun obtenerNoticiaPorId(noticiaId: Int): LiveData<Noticia> = noticiaDao.obtenerNoticiaPorId(noticiaId)
+    suspend fun actualizarNoticia(noticia: Noticia) = noticiaDao.actualizarNoticia(noticia)
 
     // --- Escritura ---
     suspend fun actualizarLiga(liga: Liga) = ligaDao.actualizarLiga(liga)

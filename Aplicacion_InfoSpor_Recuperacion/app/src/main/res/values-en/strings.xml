@@ -14,4 +14,40 @@
     <string name="favorito_agregado">Added to favorites</string>
     <string name="favorito_eliminado">Removed from favorites</string>
     <string name="acerca_de_desc">InfoSport v1.0\nDeveloped for Android class.\nAn app for football lovers.</string>
+    
+    <!-- Additional texts -->
+    <string name="buscar">Search matches...</string>
+    <string name="resultados">Results</string>
+    <string name="clasificacion">Standings</string>
+    <string name="finalizado">Finished</string>
+    <string name="vs">VS</string>
+    <string name="detalles_partido">Match Details</string>
+    <string name="eventos">Events</string>
+    <string name="alineaciones">Lineups</string>
+    <string name="estadisticas">Statistics</string>
+    <string name="sin_eventos">No events recorded</string>
+    <string name="sin_alineaciones">No lineups available</string>
+    <string name="posicion">Pos</string>
+    <string name="equipo">Team</string>
+    <string name="puntos">Pts</string>
+    <string name="partidos_jugados">MP</string>
+    <string name="ganados">W</string>
+    <string name="empatados">D</string>
+    <string name="perdidos">L</string>
+    <string name="goles_favor">GF</string>
+    <string name="goles_contra">GA</string>
+    <string name="error_cargar_datos">Error loading data</string>
+    <string name="leer_mas">Read more</string>
+    <string name="autor">Author:</string>
+    <string name="fecha">Date:</string>
+    <string name="ligas_principales">Top Leagues</string>
+    <string name="seleccionar_liga">Select a league</string>
+    <string name="no_favoritos">You have no saved favorites</string>
+    <string name="agregar_favoritos">Add leagues, matches or news to favorites</string>
+    <string name="acerca_de_titulo">About InfoSport</string>
+    <string name="acerca_de_version">Version 1.0</string>
+    <string name="acerca_de_desarrollador">Developed by: Android Student</string>
+    <string name="acerca_de_descripcion">InfoSport is an application developed as an academic project for the Mobile Application Development course.\n\nIt allows you to consult information about football leagues, matches, standings and sports news.\n\nMain features:\n• Real-time match information\n• Updated standings\n• Sports news\n• Favorites system\n• Multi-language support</string>
+    <string name="acerca_de_contacto">Contact: infosport@example.com</string>
+    <string name="acerca_de_agradecimientos">Special thanks to the teacher and classmates for their support.</string>
 </resources>

@@ -74,7 +74,7 @@ abstract class AppDataBase : RoomDatabase() {
             // Insertar datos masivos
             db.ligaDao().insertarLigas(PreCargaDatos.LIGAS)
             db.ligaDao().insertarEquipos(PreCargaDatos.EQUIPOS)
-            // db.ligaDao().insertarClasificacion(PreCargaDatos.CLASIFICACION) // Si tienes datos de clasificación
+            db.ligaDao().insertarClasificacion(PreCargaDatos.CLASIFICACION)
 
             db.partidoDao().insertarPartidos(PreCargaDatos.PARTIDOS)
             db.partidoDao().insertarEventos(PreCargaDatos.EVENTOS)

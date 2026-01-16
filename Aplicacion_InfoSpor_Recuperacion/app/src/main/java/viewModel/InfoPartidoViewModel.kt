@@ -7,7 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
+import androidx.lifecycle.viewModelScope
 import db.AppDataBase
+import kotlinx.coroutines.launch
 import model.Alineacion
 import model.Evento
 import model.Partido
@@ -32,9 +34,7 @@ class InfoPartidoViewModel(application: Application) : AndroidViewModel(applicat
     private val _partidoId = MutableLiveData<Int>()
 
     // LiveData que obtiene el Partido básico al cambiar _partidoId
-    val partido: LiveData<Partido> = _partidoId.switchMap { id ->
-        repository.obtenerPartidoPorId(id)
-    }
+    val partido: LiveData<Partido> = _partidoId.switchMap { id -> repository.obtenerPartidoPorId(id) }
 
     // LiveData combinado: contendrá el objeto PartidoDetalle completo
     val partidoDetalleCompleto = MediatorLiveData<PartidoDetalle>()
@@ -76,7 +76,16 @@ class InfoPartidoViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    // El Fragment puede llamar a estos directamente (si no se usa MediatorLiveData)
+    fun toggleFavorito() {
+        partido.value?.let { partidoActual ->
+            viewModelScope.launch {
+                partidoActual.esFavorita = !partidoActual.esFavorita
+                repository.actualizarPartido(partidoActual)
+            }
+        }
+    }
+
+
     fun getEventos(partidoId: Int): LiveData<List<Evento>> {
         return repository.obtenerEventosPorPartido(partidoId)
     }

@@ -1,45 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingVertical="12dp"
-    android:paddingHorizontal="8dp"
-    android:gravity="center_vertical"
-    android:background="@color/card_background"
-    android:layout_marginBottom="1dp"> <TextView
-    android:id="@+id/tvMinuto"
-    android:layout_width="50dp"
-    android:layout_height="wrap_content"
-    tools:text="45'"
-    android:textColor="@color/primary_green"
-    android:textStyle="bold"
-    android:textSize="16sp"
-    android:gravity="center"/>
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/card_background">
 
-    <View
-        android:layout_width="1dp"
-        android:layout_height="24dp"
-        android:background="@color/text_secondary"
-        android:alpha="0.3"/>
-
-    <ImageView
-        android:id="@+id/ivIconoEvento"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        tools:src="@drawable/yellow_card"
-        android:contentDescription="Icono Evento" />
-
-    <TextView
-        android:id="@+id/tvNombreJugador"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginStart="16dp"
-        tools:text="Vinicius Jr. (Gol)"
-        android:textColor="@color/white"
-        android:textSize="16sp"/>
+        android:orientation="horizontal"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="12dp"
+        android:gravity="center_vertical">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvMinuto"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            tools:text="45'"
+            android:textColor="@color/primary_green"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="32dp"
+            android:background="@color/primary_green"
+            android:layout_marginHorizontal="8dp"/>
+
+        <ImageView
+            android:id="@+id/ivIconoEvento"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="8dp"
+            tools:src="@drawable/yellow_card"
+            android:contentDescription="Icono Evento" />
+
+        <TextView
+            android:id="@+id/tvNombreJugador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            tools:text="Vinicius Jr. (Gol)"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

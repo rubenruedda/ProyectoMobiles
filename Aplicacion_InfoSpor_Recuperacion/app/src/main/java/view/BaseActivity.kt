@@ -1,21 +1,22 @@
 package view
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.aplicacion_infosport.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 open class BaseActivity : AppCompatActivity() {
 
+    private val TAG = "BaseActivity"
+
     fun setupBottomNavigation(bottomNavigationView: BottomNavigationView, selectedItemId: Int) {
+        Log.d(TAG, "Configurando navegación inferior, item seleccionado: $selectedItemId")
         bottomNavigationView.selectedItemId = selectedItemId
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             if (item.itemId != selectedItemId) {
+                Log.d(TAG, "Navegando a: ${item.title}")
                 when (item.itemId) {
                     R.id.nav_inicio -> navegar(MainActivity::class.java)
                     R.id.nav_competiciones -> navegar(CompeticionesActivity::class.java)
@@ -29,6 +30,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private fun navegar(destino: Class<*>) {
+        Log.d(TAG, "Iniciando actividad: ${destino.simpleName}")
         startActivity(Intent(this, destino))
         overridePendingTransition(0, 0) // Elimina animación para efecto "pestaña"
         finish() // Cierra la activity actual

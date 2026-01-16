@@ -40,4 +40,7 @@ interface PartidoDAO {
 
     @Query("SELECT * FROM alineacion WHERE partido_id = :partidoId AND equipo_id = :equipoId ORDER BY es_titular DESC, dorsal ASC")
     fun obtenerAlineacionPorEquipo(partidoId: Int, equipoId: Int): LiveData<List<Alineacion>>
+
+    @Update
+    suspend fun actualizarPartido(partido: Partido)
 }
