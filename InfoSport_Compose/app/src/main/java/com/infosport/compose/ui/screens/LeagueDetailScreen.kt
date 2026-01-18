@@ -105,7 +105,7 @@ fun LeagueDetailScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // Tabs
+            // Tabs de clasificacion y partidos
             TabRow(selectedTabIndex = selectedTab) {
                 tabs.forEachIndexed { index, title ->
                     Tab(
@@ -116,10 +116,10 @@ fun LeagueDetailScreen(
                 }
             }
             
-            // Contenido según el tab
+            // Muestro clasificacion o partidos segun el tab
             when (selectedTab) {
                 0 -> {
-                    // Clasificación
+                    // Clasificacion
                     if (standings.isEmpty()) {
                         Box(
                             modifier = Modifier.fillMaxSize(),
@@ -142,7 +142,7 @@ fun LeagueDetailScreen(
                     }
                 }
                 1 -> {
-                    // Partidos
+                    // Partidos de la liga
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
                         contentPadding = PaddingValues(16.dp),

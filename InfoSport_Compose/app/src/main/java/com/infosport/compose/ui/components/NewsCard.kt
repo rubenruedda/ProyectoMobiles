@@ -37,7 +37,7 @@ fun NewsCard(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            // Imagen
+            // Imagen de la noticia
             if (noticia.imagenUrl != null) {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
@@ -57,7 +57,7 @@ fun NewsCard(
             Column(
                 modifier = Modifier.padding(16.dp)
             ) {
-                // Título
+                // Titulo
                 Text(
                     text = noticia.titulo,
                     style = MaterialTheme.typography.titleMedium,
@@ -68,7 +68,7 @@ fun NewsCard(
                 
                 Spacer(modifier = Modifier.height(8.dp))
                 
-                // Contenido resumido
+                // Preview del contenido
                 Text(
                     text = noticia.contenido,
                     style = MaterialTheme.typography.bodyMedium,
@@ -79,7 +79,7 @@ fun NewsCard(
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 
-                // Footer con fuente, fecha y favorito
+                // Fuente y fecha
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,

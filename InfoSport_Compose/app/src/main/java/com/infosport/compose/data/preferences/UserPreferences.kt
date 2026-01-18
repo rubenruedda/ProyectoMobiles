@@ -20,10 +20,10 @@ class UserPreferences(private val context: Context) {
         val USERNAME = stringPreferencesKey("username")
     }
 
-    // Enum para el tema
+    // Tipos de tema disponibles
     enum class ThemeMode { LIGHT, DARK, SYSTEM }
 
-    // Obtener el tema actual
+    // Tema actual
     val themeMode: Flow<ThemeMode> = context.dataStore.data
         .catch { exception ->
             if (exception is IOException) {
@@ -40,14 +40,14 @@ class UserPreferences(private val context: Context) {
             }
         }
 
-    // Guardar tema
+    // Guardo el tema que elija el usuario
     suspend fun setThemeMode(mode: ThemeMode) {
         context.dataStore.edit { preferences ->
             preferences[PreferencesKeys.THEME_MODE] = mode.name
         }
     }
 
-    // Obtener estado de notificaciones
+    // Si las notificaciones estan activadas o no
     val notificationsEnabled: Flow<Boolean> = context.dataStore.data
         .catch { exception ->
             if (exception is IOException) {
@@ -67,7 +67,7 @@ class UserPreferences(private val context: Context) {
         }
     }
 
-    // Obtener última liga seleccionada
+    // Ultima liga que miro el usuario
     val lastSelectedLeague: Flow<String?> = context.dataStore.data
         .catch { exception ->
             if (exception is IOException) {
@@ -87,7 +87,7 @@ class UserPreferences(private val context: Context) {
         }
     }
 
-    // Obtener nombre de usuario
+    // Nombre del usuario
     val username: Flow<String> = context.dataStore.data
         .catch { exception ->
             if (exception is IOException) {

@@ -28,7 +28,7 @@ class HomeViewModel(private val repository: InfoSportRepository) : ViewModel() {
         Log.d("HomeViewModel", "Loading matches for: $today")
         
         viewModelScope.launch {
-            // First try to get today's matches
+            // Primero intento cargar los de hoy
             repository.obtenerPartidosPorFecha(today)
                 .catch { e ->
                     Log.e("HomeViewModel", "Error loading matches: ${e.message}")
@@ -36,7 +36,7 @@ class HomeViewModel(private val repository: InfoSportRepository) : ViewModel() {
                 }
                 .collect { matches ->
                     if (matches.isEmpty()) {
-                        // If no matches today, load all matches for demo purposes
+                        // Si no hay partidos hoy cargo todos para que se vea algo
                         Log.d("HomeViewModel", "No matches today, loading all matches")
                         loadAllMatches()
                     } else {

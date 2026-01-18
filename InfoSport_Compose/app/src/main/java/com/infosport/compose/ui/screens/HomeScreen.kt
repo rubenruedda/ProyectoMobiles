@@ -55,7 +55,7 @@ fun HomeScreen(
                     modifier = Modifier.align(Alignment.Center)
                 )
             } else if (matches.isEmpty()) {
-                // Estado vacío
+                // No hay partidos
                 Column(
                     modifier = Modifier
                         .fillMaxSize()

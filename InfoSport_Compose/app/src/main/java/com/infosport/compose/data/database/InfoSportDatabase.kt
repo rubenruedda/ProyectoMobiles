@@ -65,7 +65,7 @@ abstract class InfoSportDatabase : RoomDatabase() {
             val partidoDao = database.partidoDao()
             val noticiaDao = database.noticiaDao()
 
-            // Ligas
+            // Datos de ejemplo para probar la app
             val ligas = listOf(
                 Liga("1", "LaLiga EA Sports", "España", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/1200px-LaLiga_logo_2023.svg.png", true),
                 Liga("2", "Premier League", "Inglaterra", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1200px-Premier_League_Logo.svg.png", false),
@@ -76,7 +76,6 @@ abstract class InfoSportDatabase : RoomDatabase() {
             )
             ligaDao.insertarLigas(ligas)
 
-            // Partidos
             val partidos = listOf(
                 Partido(1, "1", 101, 102, "Real Madrid", "FC Barcelona", "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png", "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png", null, null, "17/01/2026", "21:00"),
                 Partido(2, "1", 103, 104, "Atlético de Madrid", "Sevilla FC", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Atletico_Madrid_2017_logo.svg/1200px-Atletico_Madrid_2017_logo.svg.png", "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Sevilla_FC_logo.svg/1200px-Sevilla_FC_logo.svg.png", null, null, "17/01/2026", "18:30"),
@@ -89,7 +88,6 @@ abstract class InfoSportDatabase : RoomDatabase() {
             )
             partidoDao.insertarPartidos(partidos)
 
-            // Eventos
             val eventos = listOf(
                 Evento(1, 3, 12, "Gol", 101, "Vinicius Jr."),
                 Evento(2, 3, 38, "Gol", 102, "Lewandowski"),
@@ -102,7 +100,6 @@ abstract class InfoSportDatabase : RoomDatabase() {
             )
             partidoDao.insertarEventos(eventos)
 
-            // Clasificación
             val clasificacion = listOf(
                 Clasificacion("1", 101, "Real Madrid", "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png", 1, 52, 20, 16, 4, 0),
                 Clasificacion("1", 102, "FC Barcelona", "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png", 2, 48, 20, 15, 3, 2),
@@ -113,7 +110,6 @@ abstract class InfoSportDatabase : RoomDatabase() {
             )
             partidoDao.insertarClasificacion(clasificacion)
 
-            // Noticias
             val noticias = listOf(
                 Noticia(1, "El Clásico paraliza el mundo", "Real Madrid y Barcelona se enfrentan en un duelo decisivo por el liderato de LaLiga.", "Marca", "17/01/2026", "https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_lg_2x/f_auto/primary/b8wbxp9i3afuqr8sxm4i"),
                 Noticia(2, "Haaland rompe otro récord", "El delantero noruego del Manchester City ha superado la marca de goles en una sola temporada.", "BBC Sport", "16/01/2026", "https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_lg_2x/f_auto/primary/c9iswfyfyauo1xjzvcx9"),

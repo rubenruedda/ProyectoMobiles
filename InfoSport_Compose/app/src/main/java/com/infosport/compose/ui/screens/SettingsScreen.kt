@@ -58,7 +58,7 @@ fun SettingsScreen(
                 .padding(paddingValues)
                 .verticalScroll(rememberScrollState())
         ) {
-            // Sección de Apariencia
+            // Apariencia
             SettingsSection(title = stringResource(R.string.settings_appearance)) {
                 SettingsItem(
                     icon = Icons.Default.Palette,
@@ -74,7 +74,7 @@ fun SettingsScreen(
             
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             
-            // Sección de Notificaciones
+            // Notificaciones
             SettingsSection(title = stringResource(R.string.settings_notifications)) {
                 SettingsItemWithSwitch(
                     icon = Icons.Default.Notifications,
@@ -96,7 +96,7 @@ fun SettingsScreen(
             
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             
-            // Sección de Cuenta
+            // Cuenta
             SettingsSection(title = stringResource(R.string.settings_account)) {
                 SettingsItem(
                     icon = Icons.Default.Person,
@@ -111,7 +111,7 @@ fun SettingsScreen(
             
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             
-            // Sección Acerca de
+            // Informacion de la app
             SettingsSection(title = stringResource(R.string.settings_about)) {
                 SettingsItem(
                     icon = Icons.Default.Info,
@@ -136,7 +136,7 @@ fun SettingsScreen(
         }
     }
     
-    // Diálogo de selección de tema
+    // Dialogo para elegir tema
     if (showThemeDialog) {
         AlertDialog(
             onDismissRequest = { showThemeDialog = false },
@@ -177,7 +177,7 @@ fun SettingsScreen(
         )
     }
     
-    // Diálogo de nombre de usuario
+    // Dialogo para cambiar el nombre
     if (showUsernameDialog) {
         AlertDialog(
             onDismissRequest = { showUsernameDialog = false },

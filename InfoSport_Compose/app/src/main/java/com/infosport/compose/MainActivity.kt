@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
         
         Log.d("MainActivity", "Iniciando InfoSport Compose")
         
-        // Inicializar base de datos y repositorio
+        // Inicializo la base de datos
         val database = InfoSportDatabase.getDatabase(applicationContext)
         repository = InfoSportRepository(
             ligaDao = database.ligaDao(),
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
             noticiaDao = database.noticiaDao()
         )
         
-        // Inicializar preferencias
+        // Preferencias del usuario (tema, notis, etc)
         userPreferences = UserPreferences(applicationContext)
         
         setContent {
@@ -75,7 +75,7 @@ fun MainScreen(
 ) {
     val navController = rememberNavController()
     
-    // ViewModels
+    // Creo los ViewModels con sus factories
     val homeViewModel: HomeViewModel = viewModel(
         factory = HomeViewModel.Factory(repository)
     )
@@ -95,7 +95,7 @@ fun MainScreen(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     
-    // Bottom Navigation items
+    // Items del menu de abajo
     val bottomNavItems = listOf(
         BottomNavItem(
             screen = Screen.Home,
@@ -124,7 +124,7 @@ fun MainScreen(
         )
     )
     
-    // Determinar si mostrar la bottom bar
+    // Solo muestro el menu en las pantallas principales
     val showBottomBar = bottomNavItems.any { it.screen.route == currentDestination?.route }
     
     Scaffold(

@@ -38,7 +38,7 @@ fun LeagueCard(
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Logo de la liga
+            // Logo
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(liga.logoUrl)
@@ -52,7 +52,7 @@ fun LeagueCard(
             
             Spacer(modifier = Modifier.width(16.dp))
             
-            // Info de la liga
+            // Nombre y pais
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -69,7 +69,7 @@ fun LeagueCard(
                 )
             }
             
-            // Botón de favorito
+            // Favavorito
             IconButton(onClick = onFavoriteClick) {
                 Icon(
                     imageVector = if (liga.esFavorita) Icons.Default.Favorite else Icons.Default.FavoriteBorder,

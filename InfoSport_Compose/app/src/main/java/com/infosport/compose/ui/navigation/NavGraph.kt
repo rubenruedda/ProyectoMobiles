@@ -63,7 +63,7 @@ fun NavGraph(
             )
         }
         
-        // Detalle de Partido
+        // Detalle partido
         composable(
             route = Screen.MatchDetail.route,
             arguments = listOf(navArgument("partidoId") { type = NavType.IntType })
@@ -86,7 +86,7 @@ fun NavGraph(
             )
         }
         
-        // Detalle de Noticia
+        // Detalle noticia
         composable(
             route = Screen.NewsDetail.route,
             arguments = listOf(navArgument("noticiaId") { type = NavType.IntType })
