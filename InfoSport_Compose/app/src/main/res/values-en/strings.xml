@@ -56,25 +56,15 @@
     <string name="settings_theme_dark">Dark</string>
     <string name="settings_theme_system">System</string>
     <string name="settings_notifications">Notifications</string>
-    <string name="settings_notifications_enabled">Enabled</string>
-    <string name="settings_notifications_disabled">Disabled</string>
     <string name="settings_language">Language</string>
     <string name="settings_about">About</string>
     <string name="settings_version">Version</string>
     <string name="settings_appearance">Appearance</string>
-    <string name="settings_enable_notifications">Enable notifications</string>
-    <string name="settings_notifications_description">Receive notifications about matches and news</string>
-    <string name="settings_account">Account</string>
-    <string name="settings_username">Username</string>
-    <string name="settings_no_username">No username</string>
     <string name="settings_developer">Developer</string>
     <string name="settings_developer_info">Class project</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system">Follow system</string>
-    <string name="notifications_enabled">Notifications enabled</string>
-    <string name="notifications_disabled">Notifications disabled</string>
-    <string name="username_saved">Username saved</string>
     
     <!-- Match Detail -->
     <string name="match_detail_title">Match Details</string>

@@ -7,16 +7,10 @@ import com.infosport.compose.data.preferences.UserPreferences
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class SettingsViewModel(private val userPreferences: UserPreferences) : ViewModel() {
+class AjustesViewModel(private val userPreferences: UserPreferences) : ViewModel() {
     
     val themeMode: StateFlow<UserPreferences.ThemeMode> = userPreferences.themeMode
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), UserPreferences.ThemeMode.SYSTEM)
-    
-    val notificationsEnabled: StateFlow<Boolean> = userPreferences.notificationsEnabled
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
-    
-    val username: StateFlow<String> = userPreferences.username
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
     
     fun setThemeMode(mode: UserPreferences.ThemeMode) {
         viewModelScope.launch {
@@ -24,23 +18,11 @@ class SettingsViewModel(private val userPreferences: UserPreferences) : ViewMode
         }
     }
     
-    fun setNotificationsEnabled(enabled: Boolean) {
-        viewModelScope.launch {
-            userPreferences.setNotificationsEnabled(enabled)
-        }
-    }
-    
-    fun setUsername(name: String) {
-        viewModelScope.launch {
-            userPreferences.setUsername(name)
-        }
-    }
-    
     class Factory(private val userPreferences: UserPreferences) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
-                return SettingsViewModel(userPreferences) as T
+            if (modelClass.isAssignableFrom(AjustesViewModel::class.java)) {
+                return AjustesViewModel(userPreferences) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

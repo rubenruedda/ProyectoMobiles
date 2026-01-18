@@ -76,20 +76,20 @@ fun MainScreen(
     val navController = rememberNavController()
     
     // Creo los ViewModels con sus factories
-    val homeViewModel: HomeViewModel = viewModel(
-        factory = HomeViewModel.Factory(repository)
+    val homeViewModel: InicioViewModel = viewModel(
+        factory = InicioViewModel.Factory(repository)
     )
-    val leaguesViewModel: LeaguesViewModel = viewModel(
-        factory = LeaguesViewModel.Factory(repository)
+    val leaguesViewModel: LigasViewModel = viewModel(
+        factory = LigasViewModel.Factory(repository)
     )
-    val newsViewModel: NewsViewModel = viewModel(
-        factory = NewsViewModel.Factory(repository)
+    val newsViewModel: NoticiasViewModel = viewModel(
+        factory = NoticiasViewModel.Factory(repository)
     )
-    val favoritesViewModel: FavoritesViewModel = viewModel(
-        factory = FavoritesViewModel.Factory(repository)
+    val favoritesViewModel: FavoritosViewModel = viewModel(
+        factory = FavoritosViewModel.Factory(repository)
     )
-    val settingsViewModel: SettingsViewModel = viewModel(
-        factory = SettingsViewModel.Factory(userPreferences)
+    val settingsViewModel: AjustesViewModel = viewModel(
+        factory = AjustesViewModel.Factory(userPreferences)
     )
     
     val navBackStackEntry by navController.currentBackStackEntryAsState()

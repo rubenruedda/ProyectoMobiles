@@ -19,12 +19,12 @@ import com.infosport.compose.R
 import com.infosport.compose.ui.components.LeagueCard
 import com.infosport.compose.ui.components.MatchCard
 import com.infosport.compose.ui.components.NewsCard
-import com.infosport.compose.ui.viewmodel.FavoritesViewModel
+import com.infosport.compose.ui.viewmodel.FavoritosViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FavoritesScreen(
-    viewModel: FavoritesViewModel,
+    viewModel: FavoritosViewModel,
     onLeagueClick: (String) -> Unit,
     onMatchClick: (Int) -> Unit,
     onNewsClick: (Int) -> Unit

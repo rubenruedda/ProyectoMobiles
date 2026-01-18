@@ -24,13 +24,13 @@ import com.infosport.compose.ui.components.MatchCard
 import com.infosport.compose.ui.components.StandingsTable
 import com.infosport.compose.ui.theme.FavoriteActive
 import com.infosport.compose.ui.theme.FavoriteInactive
-import com.infosport.compose.ui.viewmodel.LeaguesViewModel
+import com.infosport.compose.ui.viewmodel.LigasViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LeagueDetailScreen(
     ligaId: String,
-    viewModel: LeaguesViewModel,
+    viewModel: LigasViewModel,
     onBackClick: () -> Unit,
     onMatchClick: (Int) -> Unit
 ) {

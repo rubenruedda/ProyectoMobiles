@@ -21,13 +21,13 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.infosport.compose.R
 import com.infosport.compose.data.model.Noticia
-import com.infosport.compose.ui.viewmodel.NewsViewModel
+import com.infosport.compose.ui.viewmodel.NoticiasViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsDetailScreen(
     noticiaId: Int,
-    viewModel: NewsViewModel,
+    viewModel: NoticiasViewModel,
     onBackClick: () -> Unit
 ) {
     val selectedNews by viewModel.selectedNews.collectAsState()

@@ -1,7 +1,6 @@
 package com.infosport.compose.ui.screens
 
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,12 +16,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.infosport.compose.R
 import com.infosport.compose.ui.components.MatchCard
-import com.infosport.compose.ui.viewmodel.HomeViewModel
+import com.infosport.compose.ui.viewmodel.InicioViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel,
+    viewModel: InicioViewModel,
     onMatchClick: (Int) -> Unit
 ) {
     val matches by viewModel.todayMatches.collectAsState()

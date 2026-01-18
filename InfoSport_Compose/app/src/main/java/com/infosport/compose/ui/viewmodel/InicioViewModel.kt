@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeViewModel(private val repository: InfoSportRepository) : ViewModel() {
+class InicioViewModel(private val repository: InfoSportRepository) : ViewModel() {
     
     private val _todayMatches = MutableStateFlow<List<Partido>>(emptyList())
     val todayMatches: StateFlow<List<Partido>> = _todayMatches.asStateFlow()
@@ -72,8 +72,8 @@ class HomeViewModel(private val repository: InfoSportRepository) : ViewModel() {
     class Factory(private val repository: InfoSportRepository) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-                return HomeViewModel(repository) as T
+            if (modelClass.isAssignableFrom(InicioViewModel::class.java)) {
+                return InicioViewModel(repository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

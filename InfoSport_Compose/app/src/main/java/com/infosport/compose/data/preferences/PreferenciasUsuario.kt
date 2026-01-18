@@ -15,9 +15,7 @@ class UserPreferences(private val context: Context) {
 
     private object PreferencesKeys {
         val THEME_MODE = stringPreferencesKey("theme_mode")
-        val NOTIFICATIONS_ENABLED = booleanPreferencesKey("notifications_enabled")
         val LAST_SELECTED_LEAGUE = stringPreferencesKey("last_selected_league")
-        val USERNAME = stringPreferencesKey("username")
     }
 
     // Tipos de tema disponibles
@@ -47,26 +45,6 @@ class UserPreferences(private val context: Context) {
         }
     }
 
-    // Si las notificaciones estan activadas o no
-    val notificationsEnabled: Flow<Boolean> = context.dataStore.data
-        .catch { exception ->
-            if (exception is IOException) {
-                emit(emptyPreferences())
-            } else {
-                throw exception
-            }
-        }
-        .map { preferences ->
-            preferences[PreferencesKeys.NOTIFICATIONS_ENABLED] ?: true
-        }
-
-    // Guardar estado de notificaciones
-    suspend fun setNotificationsEnabled(enabled: Boolean) {
-        context.dataStore.edit { preferences ->
-            preferences[PreferencesKeys.NOTIFICATIONS_ENABLED] = enabled
-        }
-    }
-
     // Ultima liga que miro el usuario
     val lastSelectedLeague: Flow<String?> = context.dataStore.data
         .catch { exception ->
@@ -84,26 +62,6 @@ class UserPreferences(private val context: Context) {
     suspend fun setLastSelectedLeague(leagueId: String) {
         context.dataStore.edit { preferences ->
             preferences[PreferencesKeys.LAST_SELECTED_LEAGUE] = leagueId
-        }
-    }
-
-    // Nombre del usuario
-    val username: Flow<String> = context.dataStore.data
-        .catch { exception ->
-            if (exception is IOException) {
-                emit(emptyPreferences())
-            } else {
-                throw exception
-            }
-        }
-        .map { preferences ->
-            preferences[PreferencesKeys.USERNAME] ?: ""
-        }
-
-    // Guardar nombre de usuario
-    suspend fun setUsername(name: String) {
-        context.dataStore.edit { preferences ->
-            preferences[PreferencesKeys.USERNAME] = name
         }
     }
 }

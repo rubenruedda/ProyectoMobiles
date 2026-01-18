@@ -1,6 +1,5 @@
 package com.infosport.compose.ui.screens
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,21 +19,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.infosport.compose.R
 import com.infosport.compose.data.preferences.UserPreferences.ThemeMode
-import com.infosport.compose.ui.viewmodel.SettingsViewModel
+import com.infosport.compose.ui.viewmodel.AjustesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
-    viewModel: SettingsViewModel
+    viewModel: AjustesViewModel
 ) {
     val themeMode by viewModel.themeMode.collectAsState()
-    val notificationsEnabled by viewModel.notificationsEnabled.collectAsState()
-    val username by viewModel.username.collectAsState()
     val context = LocalContext.current
     
     var showThemeDialog by remember { mutableStateOf(false) }
-    var showUsernameDialog by remember { mutableStateOf(false) }
-    var tempUsername by remember { mutableStateOf(username) }
     
     Scaffold(
         topBar = {
@@ -69,43 +64,6 @@ fun SettingsScreen(
                         ThemeMode.SYSTEM -> stringResource(R.string.theme_system)
                     },
                     onClick = { showThemeDialog = true }
-                )
-            }
-            
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-            
-            // Notificaciones
-            SettingsSection(title = stringResource(R.string.settings_notifications)) {
-                SettingsItemWithSwitch(
-                    icon = Icons.Default.Notifications,
-                    title = stringResource(R.string.settings_enable_notifications),
-                    subtitle = stringResource(R.string.settings_notifications_description),
-                    checked = notificationsEnabled,
-                    onCheckedChange = { enabled ->
-                        viewModel.setNotificationsEnabled(enabled)
-                        val message = if (enabled) {
-                            context.getString(R.string.notifications_enabled)
-                        } else {
-                            context.getString(R.string.notifications_disabled)
-                        }
-                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-                        Log.d("SettingsScreen", "Notificaciones: $enabled")
-                    }
-                )
-            }
-            
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-            
-            // Cuenta
-            SettingsSection(title = stringResource(R.string.settings_account)) {
-                SettingsItem(
-                    icon = Icons.Default.Person,
-                    title = stringResource(R.string.settings_username),
-                    subtitle = username.ifEmpty { stringResource(R.string.settings_no_username) },
-                    onClick = { 
-                        tempUsername = username
-                        showUsernameDialog = true 
-                    }
                 )
             }
             
@@ -177,42 +135,6 @@ fun SettingsScreen(
         )
     }
     
-    // Dialogo para cambiar el nombre
-    if (showUsernameDialog) {
-        AlertDialog(
-            onDismissRequest = { showUsernameDialog = false },
-            title = { Text(stringResource(R.string.settings_username)) },
-            text = {
-                OutlinedTextField(
-                    value = tempUsername,
-                    onValueChange = { tempUsername = it },
-                    label = { Text(stringResource(R.string.settings_username)) },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        viewModel.setUsername(tempUsername)
-                        showUsernameDialog = false
-                        Toast.makeText(
-                            context,
-                            context.getString(R.string.username_saved),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                ) {
-                    Text(stringResource(R.string.save))
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showUsernameDialog = false }) {
-                    Text(stringResource(R.string.cancel))
-                }
-            }
-        )
-    }
 }
 
 @Composable
@@ -272,51 +194,6 @@ private fun SettingsItem(
                 imageVector = Icons.Default.ChevronRight,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-    }
-}
-
-@Composable
-private fun SettingsItemWithSwitch(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    title: String,
-    subtitle: String,
-    checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit
-) {
-    Surface(
-        onClick = { onCheckedChange(!checked) },
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-            Switch(
-                checked = checked,
-                onCheckedChange = onCheckedChange
             )
         }
     }

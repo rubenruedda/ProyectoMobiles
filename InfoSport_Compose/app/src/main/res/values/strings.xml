@@ -56,25 +56,15 @@
     <string name="settings_theme_dark">Oscuro</string>
     <string name="settings_theme_system">Sistema</string>
     <string name="settings_notifications">Notificaciones</string>
-    <string name="settings_notifications_enabled">Activadas</string>
-    <string name="settings_notifications_disabled">Desactivadas</string>
     <string name="settings_language">Idioma</string>
     <string name="settings_about">Acerca de</string>
     <string name="settings_version">Versión</string>
     <string name="settings_appearance">Apariencia</string>
-    <string name="settings_enable_notifications">Activar notificaciones</string>
-    <string name="settings_notifications_description">Recibe notificaciones de partidos y noticias</string>
-    <string name="settings_account">Cuenta</string>
-    <string name="settings_username">Nombre de usuario</string>
-    <string name="settings_no_username">Sin nombre</string>
     <string name="settings_developer">Desarrollador</string>
     <string name="settings_developer_info">Proyecto de clase</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
     <string name="theme_system">Seguir sistema</string>
-    <string name="notifications_enabled">Notificaciones activadas</string>
-    <string name="notifications_disabled">Notificaciones desactivadas</string>
-    <string name="username_saved">Nombre de usuario guardado</string>
     
     <!-- Match Detail -->
     <string name="match_detail_title">Detalles del Partido</string>

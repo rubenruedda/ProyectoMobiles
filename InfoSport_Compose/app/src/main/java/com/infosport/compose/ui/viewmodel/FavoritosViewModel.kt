@@ -11,7 +11,7 @@ import com.infosport.compose.data.repository.InfoSportRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class FavoritesViewModel(private val repository: InfoSportRepository) : ViewModel() {
+class FavoritosViewModel(private val repository: InfoSportRepository) : ViewModel() {
     
     private val _favoriteLeagues = MutableStateFlow<List<Liga>>(emptyList())
     val favoriteLeagues: StateFlow<List<Liga>> = _favoriteLeagues.asStateFlow()
@@ -73,8 +73,8 @@ class FavoritesViewModel(private val repository: InfoSportRepository) : ViewMode
     class Factory(private val repository: InfoSportRepository) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(FavoritesViewModel::class.java)) {
-                return FavoritesViewModel(repository) as T
+            if (modelClass.isAssignableFrom(FavoritosViewModel::class.java)) {
+                return FavoritosViewModel(repository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

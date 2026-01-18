@@ -14,12 +14,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.infosport.compose.R
 import com.infosport.compose.ui.components.LeagueCard
-import com.infosport.compose.ui.viewmodel.LeaguesViewModel
+import com.infosport.compose.ui.viewmodel.LigasViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LeaguesScreen(
-    viewModel: LeaguesViewModel,
+    viewModel: LigasViewModel,
     onLeagueClick: (String) -> Unit
 ) {
     val leagues by viewModel.leagues.collectAsState()

@@ -14,11 +14,11 @@ import com.infosport.compose.ui.viewmodel.*
 @Composable
 fun NavGraph(
     navController: NavHostController,
-    homeViewModel: HomeViewModel,
-    leaguesViewModel: LeaguesViewModel,
-    newsViewModel: NewsViewModel,
-    favoritesViewModel: FavoritesViewModel,
-    settingsViewModel: SettingsViewModel,
+    homeViewModel: InicioViewModel,
+    leaguesViewModel: LigasViewModel,
+    newsViewModel: NoticiasViewModel,
+    favoritesViewModel: FavoritosViewModel,
+    settingsViewModel: AjustesViewModel,
     repository: InfoSportRepository,
     modifier: Modifier = Modifier
 ) {

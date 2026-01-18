@@ -17,12 +17,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.infosport.compose.R
 import com.infosport.compose.ui.components.NewsCard
-import com.infosport.compose.ui.viewmodel.NewsViewModel
+import com.infosport.compose.ui.viewmodel.NoticiasViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsScreen(
-    viewModel: NewsViewModel,
+    viewModel: NoticiasViewModel,
     onNewsClick: (Int) -> Unit
 ) {
     val news by viewModel.news.collectAsState()
