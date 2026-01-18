@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Soccer Ball -->
+    <group
+        android:pivotX="54"
+        android:pivotY="54">
+        <!-- Ball outline -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M54,24
+                C37.432,24 24,37.432 24,54
+                C24,70.568 37.432,84 54,84
+                C70.568,84 84,70.568 84,54
+                C84,37.432 70.568,24 54,24z"/>
+        <!-- Pentagon pattern 1 (top) -->
+        <path
+            android:fillColor="#1B5E20"
+            android:pathData="M54,30
+                L62,38
+                L58,48
+                L50,48
+                L46,38
+                Z"/>
+        <!-- Pentagon pattern 2 (right) -->
+        <path
+            android:fillColor="#1B5E20"
+            android:pathData="M66,44
+                L76,50
+                L76,58
+                L66,64
+                L60,54
+                Z"/>
+        <!-- Pentagon pattern 3 (bottom right) -->
+        <path
+            android:fillColor="#1B5E20"
+            android:pathData="M62,68
+                L68,76
+                L60,80
+                L52,76
+                L54,68
+                Z"/>
+        <!-- Pentagon pattern 4 (bottom left) -->
+        <path
+            android:fillColor="#1B5E20"
+            android:pathData="M46,68
+                L48,76
+                L40,80
+                L32,76
+                L38,68
+                Z"/>
+        <!-- Pentagon pattern 5 (left) -->
+        <path
+            android:fillColor="#1B5E20"
+            android:pathData="M42,44
+                L48,54
+                L42,64
+                L32,58
+                L32,50
+                Z"/>
+    </group>
+</vector>

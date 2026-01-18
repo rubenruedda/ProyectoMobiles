@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">InfoSport</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_leagues">Ligas</string>
+    <string name="nav_news">Noticias</string>
+    <string name="nav_favorites">Favoritos</string>
+    <string name="nav_settings">Ajustes</string>
+    
+    <!-- Home Screen -->
+    <string name="home_title">Partidos de Hoy</string>
+    <string name="home_no_matches">No hay partidos hoy</string>
+    <string name="home_live">EN VIVO</string>
+    <string name="home_upcoming">Próximos</string>
+    <string name="home_finished">Finalizados</string>
+    
+    <!-- Leagues Screen -->
+    <string name="leagues_title">Ligas</string>
+    <string name="leagues_all">Todas las ligas</string>
+    <string name="leagues_favorites">Ligas favoritas</string>
+    <string name="league_standings">Clasificación</string>
+    <string name="league_matches">Partidos</string>
+    <string name="league_results">Resultados</string>
+    
+    <!-- News Screen -->
+    <string name="news_title">Noticias</string>
+    <string name="news_latest">Últimas noticias</string>
+    <string name="news_no_news">No hay noticias disponibles</string>
+    <string name="news_read_more">Leer más</string>
+    <string name="news_source">Fuente</string>
+    
+    <!-- Favorites Screen -->
+    <string name="favorites_title">Favoritos</string>
+    <string name="favorites_leagues">Ligas Favoritas</string>
+    <string name="favorites_matches">Partidos Favoritos</string>
+    <string name="favorites_news">Noticias Favoritas</string>
+    <string name="favorites_empty">No tienes favoritos aún</string>
+    <string name="favorites_added">Añadido a favoritos</string>
+    <string name="favorites_removed">Eliminado de favoritos</string>
+    <string name="added_to_favorites">Añadido a favoritos</string>
+    <string name="removed_from_favorites">Eliminado de favoritos</string>
+    <string name="no_favorite_leagues">No tienes ligas favoritas</string>
+    <string name="no_favorite_matches">No tienes partidos favoritos</string>
+    <string name="no_favorite_news">No tienes noticias favoritas</string>
+    <string name="tab_leagues">Ligas</string>
+    <string name="tab_matches">Partidos</string>
+    <string name="tab_news">Noticias</string>
+    
+    <!-- Settings Screen -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_light">Claro</string>
+    <string name="settings_theme_dark">Oscuro</string>
+    <string name="settings_theme_system">Sistema</string>
+    <string name="settings_notifications">Notificaciones</string>
+    <string name="settings_notifications_enabled">Activadas</string>
+    <string name="settings_notifications_disabled">Desactivadas</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_about">Acerca de</string>
+    <string name="settings_version">Versión</string>
+    <string name="settings_appearance">Apariencia</string>
+    <string name="settings_enable_notifications">Activar notificaciones</string>
+    <string name="settings_notifications_description">Recibe notificaciones de partidos y noticias</string>
+    <string name="settings_account">Cuenta</string>
+    <string name="settings_username">Nombre de usuario</string>
+    <string name="settings_no_username">Sin nombre</string>
+    <string name="settings_developer">Desarrollador</string>
+    <string name="settings_developer_info">Proyecto de clase</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+    <string name="theme_system">Seguir sistema</string>
+    <string name="notifications_enabled">Notificaciones activadas</string>
+    <string name="notifications_disabled">Notificaciones desactivadas</string>
+    <string name="username_saved">Nombre de usuario guardado</string>
+    
+    <!-- Match Detail -->
+    <string name="match_detail_title">Detalles del Partido</string>
+    <string name="match_events">Eventos</string>
+    <string name="match_lineups">Alineaciones</string>
+    <string name="match_stats">Estadísticas</string>
+    <string name="match_vs">vs</string>
+    <string name="match_date">Fecha</string>
+    <string name="match_time">Hora</string>
+    
+    <!-- News Detail -->
+    <string name="news_detail_title">Noticia</string>
+    <string name="share_news">Compartir noticia</string>
+    <string name="no_news">No hay noticias</string>
+    <string name="close">Cerrar</string>
+    
+    <!-- Events -->
+    <string name="event_goal">Gol</string>
+    <string name="event_yellow_card">Tarjeta Amarilla</string>
+    <string name="event_red_card">Tarjeta Roja</string>
+    <string name="event_substitution">Sustitución</string>
+    
+    <!-- Standings -->
+    <string name="standings_position">Pos</string>
+    <string name="standings_team">Equipo</string>
+    <string name="standings_points">Pts</string>
+    <string name="standings_played">PJ</string>
+    <string name="standings_won">PG</string>
+    <string name="standings_drawn">PE</string>
+    <string name="standings_lost">PP</string>
+    
+    <!-- Common -->
+    <string name="loading">Cargando…</string>
+    <string name="error">Error</string>
+    <string name="retry">Reintentar</string>
+    <string name="search">Buscar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">Aceptar</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Eliminar</string>
+    <string name="share">Compartir</string>
+    <string name="back">Atrás</string>
+    
+    <!-- About -->
+    <string name="about_title">Acerca de InfoSport</string>
+    <string name="about_description">InfoSport es tu aplicación de información deportiva. Sigue tus ligas, equipos y partidos favoritos en tiempo real.</string>
+    <string name="about_developer">Desarrollado por</string>
+    <string name="about_developer_name">Tu Nombre</string>
+    
+    <!-- Errors -->
+    <string name="error_network">Error de conexión</string>
+    <string name="error_loading">Error al cargar datos</string>
+    <string name="error_unknown">Error desconocido</string>
+</resources>

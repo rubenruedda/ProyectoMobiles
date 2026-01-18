@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">InfoSport</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_leagues">Leagues</string>
+    <string name="nav_news">News</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Home Screen -->
+    <string name="home_title">Today\'s Matches</string>
+    <string name="home_no_matches">No matches today</string>
+    <string name="home_live">LIVE</string>
+    <string name="home_upcoming">Upcoming</string>
+    <string name="home_finished">Finished</string>
+    
+    <!-- Leagues Screen -->
+    <string name="leagues_title">Leagues</string>
+    <string name="leagues_all">All leagues</string>
+    <string name="leagues_favorites">Favorite leagues</string>
+    <string name="league_standings">Standings</string>
+    <string name="league_matches">Matches</string>
+    <string name="league_results">Results</string>
+    
+    <!-- News Screen -->
+    <string name="news_title">News</string>
+    <string name="news_latest">Latest news</string>
+    <string name="news_no_news">No news available</string>
+    <string name="news_read_more">Read more</string>
+    <string name="news_source">Source</string>
+    
+    <!-- Favorites Screen -->
+    <string name="favorites_title">Favorites</string>
+    <string name="favorites_leagues">Favorite Leagues</string>
+    <string name="favorites_matches">Favorite Matches</string>
+    <string name="favorites_news">Favorite News</string>
+    <string name="favorites_empty">You have no favorites yet</string>
+    <string name="favorites_added">Added to favorites</string>
+    <string name="favorites_removed">Removed from favorites</string>
+    <string name="added_to_favorites">Added to favorites</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="no_favorite_leagues">No favorite leagues</string>
+    <string name="no_favorite_matches">No favorite matches</string>
+    <string name="no_favorite_news">No favorite news</string>
+    <string name="tab_leagues">Leagues</string>
+    <string name="tab_matches">Matches</string>
+    <string name="tab_news">News</string>
+    
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_notifications_enabled">Enabled</string>
+    <string name="settings_notifications_disabled">Disabled</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_enable_notifications">Enable notifications</string>
+    <string name="settings_notifications_description">Receive notifications about matches and news</string>
+    <string name="settings_account">Account</string>
+    <string name="settings_username">Username</string>
+    <string name="settings_no_username">No username</string>
+    <string name="settings_developer">Developer</string>
+    <string name="settings_developer_info">Class project</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">Follow system</string>
+    <string name="notifications_enabled">Notifications enabled</string>
+    <string name="notifications_disabled">Notifications disabled</string>
+    <string name="username_saved">Username saved</string>
+    
+    <!-- Match Detail -->
+    <string name="match_detail_title">Match Details</string>
+    <string name="match_events">Events</string>
+    <string name="match_lineups">Lineups</string>
+    <string name="match_stats">Statistics</string>
+    <string name="match_vs">vs</string>
+    <string name="match_date">Date</string>
+    <string name="match_time">Time</string>
+    
+    <!-- News Detail -->
+    <string name="news_detail_title">News</string>
+    <string name="share_news">Share news</string>
+    <string name="no_news">No news</string>
+    <string name="close">Close</string>
+    
+    <!-- Events -->
+    <string name="event_goal">Goal</string>
+    <string name="event_yellow_card">Yellow Card</string>
+    <string name="event_red_card">Red Card</string>
+    <string name="event_substitution">Substitution</string>
+    
+    <!-- Standings -->
+    <string name="standings_position">Pos</string>
+    <string name="standings_team">Team</string>
+    <string name="standings_points">Pts</string>
+    <string name="standings_played">MP</string>
+    <string name="standings_won">W</string>
+    <string name="standings_drawn">D</string>
+    <string name="standings_lost">L</string>
+    
+    <!-- Common -->
+    <string name="loading">Loading…</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    <string name="search">Search</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="back">Back</string>
+    
+    <!-- About -->
+    <string name="about_title">About InfoSport</string>
+    <string name="about_description">InfoSport is your sports information app. Follow your favorite leagues, teams and matches in real time.</string>
+    <string name="about_developer">Developed by</string>
+    <string name="about_developer_name">Your Name</string>
+    
+    <!-- Errors -->
+    <string name="error_network">Connection error</string>
+    <string name="error_loading">Error loading data</string>
+    <string name="error_unknown">Unknown error</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary">#1B5E20</color>
+    <color name="primary_dark">#003300</color>
+    <color name="primary_light">#4C8C4A</color>
+    <color name="on_primary">#FFFFFF</color>
+    
+    <!-- Secondary Colors -->
+    <color name="secondary">#FF6F00</color>
+    <color name="secondary_dark">#C43E00</color>
+    <color name="secondary_light">#FFA040</color>
+    <color name="on_secondary">#000000</color>
+    
+    <!-- Background Colors -->
+    <color name="background">#FAFAFA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="on_background">#1C1B1F</color>
+    <color name="on_surface">#1C1B1F</color>
+    
+    <!-- Status Colors -->
+    <color name="error">#B3261E</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="success">#2E7D32</color>
+    <color name="warning">#F57C00</color>
+    
+    <!-- Card Colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_border">#E0E0E0</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#9E9E9E</color>
+    
+    <!-- Match Score Colors -->
+    <color name="score_win">#4CAF50</color>
+    <color name="score_loss">#F44336</color>
+    <color name="score_draw">#FF9800</color>
+    
+    <!-- League Colors -->
+    <color name="laliga">#FF4A3D</color>
+    <color name="premier">#3D195B</color>
+    <color name="serie_a">#024494</color>
+    <color name="bundesliga">#D20515</color>
+    <color name="ligue1">#091C3E</color>
+    
+    <!-- Favorite -->
+    <color name="favorite_active">#FFD700</color>
+    <color name="favorite_inactive">#BDBDBD</color>
+</resources>
