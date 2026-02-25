@@ -7,34 +7,34 @@ object PreCargaDatos {
     // --- 1. LIGAS (Incluye ligas principales e inferiores) ---
     val LIGAS = listOf(
         // Ligas principales
-        Liga("1", "LaLiga EA Sports", "España", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/1200px-LaLiga_logo_2023.svg.png", true),
-        Liga("2", "Premier League", "Inglaterra", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1200px-Premier_League_Logo.svg.png", false),
-        Liga("3", "Serie A", "Italia", "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Serie_A_logo_2022.svg/1200px-Serie_A_logo_2022.svg.png", false),
-        Liga("4", "Bundesliga", "Alemania", "https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Bundesliga_logo_%282017%29.svg/1200px-Bundesliga_logo_%282017%29.svg.png", false),
-        Liga("5", "Ligue 1", "Francia", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ligue_1_Uber_Eats_logo.svg/1200px-Ligue_1_Uber_Eats_logo.svg.png", false),
+        Liga("1", "LaLiga EA Sports", "España", "https://drive.google.com/uc?export=view&id=1f9C0sIMU74_3i1WyXnlla8OEHX1JGDp3", true),
+        Liga("2", "Premier League", "Inglaterra", "https://drive.google.com/uc?export=view&id=1hDb1fMRESuGekN3VaCf0KcfM0uudu9IZ", false),
+        Liga("3", "Serie A", "Italia", "https://drive.google.com/uc?export=view&id=1X25uVaqgJ4k1GTKyRnT3Obim5vq_fFfb", false),
+        Liga("4", "Bundesliga", "Alemania", "https://drive.google.com/uc?export=view&id=1eJY-zs77cXRyRI4F8-hh2JFw7eLQa4fT", false),
+        Liga("5", "Ligue 1", "Francia", "https://drive.google.com/uc?export=view&id=1sLgLgher7ki57pfoiT168qnyjS-Oq803", false),
         // Ligas secundarias / inferiores
-        Liga("6", "LaLiga Hypermotion", "España", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LaLiga_Hypermotion_2023_logo.svg/1200px-LaLiga_Hypermotion_2023_logo.svg.png", false),
-        Liga("7", "Serie B", "Italia", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Serie_B_%28logo%29.svg/1200px-Serie_B_%28logo%29.svg.png", false),
-        Liga("8", "Championship", "Inglaterra", "https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/EFL_Championship.svg/1200px-EFL_Championship.svg.png", false),
-        Liga("9", "Eredivisie", "Países Bajos", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Eredivisie_Logo.svg/1200px-Eredivisie_Logo.svg.png", false),
-        Liga("10", "Liga Portugal", "Portugal", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Liga_Portugal_logo.svg/1200px-Liga_Portugal_logo.svg.png", false),
-        Liga("11", "Champions League", "Europa", "https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/UEFA_Champions_League_logo_2024.svg/1200px-UEFA_Champions_League_logo_2024.svg.png", true),
-        Liga("12", "Europa League", "Europa", "https://upload.wikimedia.org/wikipedia/en/thumb/0/03/UEFA_Europa_League_logo_%282024%29.svg/1200px-UEFA_Europa_League_logo_%282024%29.svg.png", false)
+        Liga("6", "LaLiga Hypermotion", "España", "https://drive.google.com/uc?export=view&id=1otehLis1DfJMgobNqYv9DcOuBPXDvPKh", false),
+        Liga("7", "Serie B", "Italia", "https://drive.google.com/uc?export=view&id=1-LioNtoBrMcoyaXjqj7-yo1_QIiUWX70", false),
+        Liga("8", "Championship", "Inglaterra", "https://drive.google.com/uc?export=view&id=1FT0seOg2q8hR6BkuXP_ZmfpkEx1P3SpZ", false),
+        Liga("9", "Eredivisie", "Países Bajos", "https://drive.google.com/uc?export=view&id=10t1T1Tf3jg9ScY0WmJBSHVTOIq6yoAV-", false),
+        Liga("10", "Liga Portugal", "Portugal", "https://drive.google.com/uc?export=view&id=1RNQpUnGMMtnktVRzptDW5tmcXQdc-6np", false),
+        Liga("11", "Champions League", "Europa", "https://drive.google.com/uc?export=view&id=10sLZ_7kviEHnOoa_0V3iN8QC53skYO50", true),
+        Liga("12", "Europa League", "Europa", "https://drive.google.com/uc?export=view&id=1iYKSZWnI3TVCugjYllfanMM09Bxk3GQ5", false)
     )
 
     // --- 2. EQUIPOS (Muchos más equipos) ---
     val EQUIPOS = listOf(
         // España - LaLiga
-        Equipo(101, "Real Madrid", "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png", "1", true),
-        Equipo(102, "FC Barcelona", "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png", "1", true),
-        Equipo(103, "Atlético de Madrid", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Atletico_Madrid_2017_logo.svg/1200px-Atletico_Madrid_2017_logo.svg.png", "1", false),
-        Equipo(104, "Sevilla FC", "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Sevilla_FC_logo.svg/1200px-Sevilla_FC_logo.svg.png", "1", false),
-        Equipo(105, "Real Sociedad", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Real_Sociedad_logo.svg/1200px-Real_Sociedad_logo.svg.png", "1", false),
-        Equipo(106, "Villarreal CF", "https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Villarreal_CF_logo.svg/1200px-Villarreal_CF_logo.svg.png", "1", false),
-        Equipo(107, "Real Betis", "https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Real_betis_logo.svg/1200px-Real_betis_logo.svg.png", "1", false),
-        Equipo(108, "Athletic Club", "https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Club_Athletic_Bilbao_logo.svg/1200px-Club_Athletic_Bilbao_logo.svg.png", "1", false),
-        Equipo(109, "Valencia CF", "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Valenciacf.svg/1200px-Valenciacf.svg.png", "1", false),
-        Equipo(110, "Girona FC", "https://upload.wikimedia.org/wikipedia/en/thumb/e/e2/Girona_FC_Logo.svg/1200px-Girona_FC_Logo.svg.png", "1", false),
+        Equipo(101, "Real Madrid", "https://drive.google.com/uc?export=view&id=1vF6rx5yjRYBd5rvN7fS_G2Gor3cIDggo", "1", true),
+        Equipo(102, "FC Barcelona", "https://drive.google.com/uc?export=view&id=1bdPtMvLg77kWiFuR8YossC0-9fP46xQa", "1", true),
+        Equipo(103, "Atlético de Madrid", "https://drive.google.com/uc?export=view&id=1Bkad0IFNBt71eXkF4LB7iuzec_Wi-Nfl", "1", false),
+        Equipo(104, "Sevilla FC", "https://drive.google.com/uc?export=view&id=1Hws48ClQUsp4yny5fqXQ-0eb-zXJombV", "1", false),
+        Equipo(105, "Real Sociedad", "https://drive.google.com/uc?export=view&id=1lM1kWJUMtRZYnrn8IOv8Q36mOWT-dyIM", "1", false),
+        Equipo(106, "Villarreal CF", "https://drive.google.com/uc?export=view&id=1SxeVj3_xusoNODKzJRHzvxp-hNuefUJE", "1", false),
+        Equipo(107, "Real Betis", "https://drive.google.com/uc?export=view&id=1MEdMK4haVHXPwsEIwNVnmFETrivMFCP0", "1", false),
+        Equipo(108, "Athletic Club", "https://drive.google.com/uc?export=view&id=1CcXRDnVHk74kSPj4FNHmSPvsbHlkm1wz", "1", false),
+        Equipo(109, "Valencia CF", "https://drive.google.com/uc?export=view&id=1S5qsNwVL_V-agRlUgEYU__Jko13J1kdR", "1", false),
+        Equipo(110, "Girona FC", "https://drive.google.com/uc?export=view&id=17eFv7n1Q7_6vQetll7F3dnSlCtIIFvQz", "1", false),
         // España - Segunda División
         Equipo(150, "Racing de Santander", "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Racing_de_Santander_logo.svg/1200px-Racing_de_Santander_logo.svg.png", "6", false),
         Equipo(151, "Real Zaragoza", "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Real_Zaragoza_logo.svg/1200px-Real_Zaragoza_logo.svg.png", "6", false),
